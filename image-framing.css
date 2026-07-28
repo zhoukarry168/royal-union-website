@@ -1,0 +1,6 @@
+/* Two-column presentation: aerial facility view on the left, service proof on the right. */
+.evidence-grid{display:grid;grid-template-columns:1fr 1fr;min-height:610px;padding-bottom:0}
+.evidence-image{min-height:610px;aspect-ratio:auto}
+.evidence-image img{object-fit:cover;object-position:center top;background:#edf1f6}
+.evidence-copy{position:static;z-index:auto;width:auto;margin:0;padding:75px 70px}
+@media(max-width:800px){.evidence-grid{display:grid;grid-template-columns:1fr;min-height:0;padding-bottom:0}.evidence-image{min-height:300px;aspect-ratio:auto}.evidence-copy{width:auto;margin:0;padding:45px 30px}.evidence-image img{background:#edf1f6}}
