@@ -8,6 +8,59 @@ document.querySelectorAll('.site-nav a').forEach((link) => link.addEventListener
   navigation.classList.remove('open');
   menuButton?.setAttribute('aria-expanded', 'false');
 }));
+const heroCarousel = document.querySelector('[data-hero-carousel]');
+if (heroCarousel) {
+  const slides = Array.from(heroCarousel.querySelectorAll('.hero-slide'));
+  const dots = Array.from(heroCarousel.querySelectorAll('[data-hero-slide]'));
+  const previous = heroCarousel.querySelector('[data-hero-prev]');
+  const next = heroCarousel.querySelector('[data-hero-next]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let activeIndex = Math.max(0, slides.findIndex((slide) => slide.classList.contains('is-active')));
+  let timer;
+  let pointerStartX = null;
+
+  const showSlide = (nextIndex, announce = false) => {
+    activeIndex = (nextIndex + slides.length) % slides.length;
+    slides.forEach((slide, index) => {
+      const isActive = index === activeIndex;
+      slide.classList.toggle('is-active', isActive);
+      slide.setAttribute('aria-hidden', String(!isActive));
+      slide.inert = !isActive;
+    });
+    dots.forEach((dot, index) => {
+      const isActive = index === activeIndex;
+      dot.classList.toggle('is-active', isActive);
+      dot.setAttribute('aria-selected', String(isActive));
+      dot.tabIndex = isActive ? 0 : -1;
+    });
+    if (announce) heroCarousel.setAttribute('aria-label', `ROYAL UNION sourcing highlight ${activeIndex + 1} of ${slides.length}`);
+  };
+
+  const stopAutoplay = () => { window.clearInterval(timer); timer = undefined; };
+  const startAutoplay = () => {
+    stopAutoplay();
+    if (!reduceMotion.matches) timer = window.setInterval(() => showSlide(activeIndex + 1), 7000);
+  };
+
+  previous?.addEventListener('click', () => { showSlide(activeIndex - 1, true); startAutoplay(); });
+  next?.addEventListener('click', () => { showSlide(activeIndex + 1, true); startAutoplay(); });
+  dots.forEach((dot, index) => dot.addEventListener('click', () => { showSlide(index, true); startAutoplay(); }));
+  heroCarousel.addEventListener('mouseenter', stopAutoplay);
+  heroCarousel.addEventListener('mouseleave', startAutoplay);
+  heroCarousel.addEventListener('focusin', stopAutoplay);
+  heroCarousel.addEventListener('focusout', (event) => { if (!heroCarousel.contains(event.relatedTarget)) startAutoplay(); });
+  heroCarousel.addEventListener('pointerdown', (event) => { pointerStartX = event.clientX; });
+  heroCarousel.addEventListener('pointerup', (event) => {
+    if (pointerStartX === null) return;
+    const delta = event.clientX - pointerStartX;
+    if (Math.abs(delta) > 45) { showSlide(activeIndex + (delta < 0 ? 1 : -1), true); startAutoplay(); }
+    pointerStartX = null;
+  });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopAutoplay(); else startAutoplay(); });
+  reduceMotion.addEventListener?.('change', startAutoplay);
+  showSlide(activeIndex);
+  startAutoplay();
+}
 const navGroups = Array.from(document.querySelectorAll('.nav-group'));
 const desktopHover = window.matchMedia('(hover: hover) and (pointer: fine)');
 const closeAllNavGroups = () => navGroups.forEach((group) => group.removeAttribute('open'));
