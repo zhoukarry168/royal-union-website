@@ -1,3 +1,30 @@
+# Search, social-preview and answer-engine crawlers may access public pages.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Enables Gemini Apps and grounding with Google Search. This token has no effect on Google Search ranking.
+User-agent: Google-Extended
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Search access is enabled, while model-training-only access remains disabled.
+User-agent: GPTBot
+Disallow: /
+
 User-agent: *
 Allow: /
 
