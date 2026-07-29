@@ -146,6 +146,29 @@
   setLeadingText(".hero-actions .button-primary", "hero.primary");
   setLeadingText(".hero-actions .text-link", "hero.secondary");
 
+  const marketHeroTranslations = {
+    en: { eyebrow: "Yiwu market. Global supply.", title: "Start in Yiwu.<br /><em>Scale worldwide.</em>", copy: "Discover the right product opportunities at the source, then turn them into a controlled sourcing programme — supplier coordination, quality assurance, consolidation and global delivery.", primary: "Build your Yiwu sourcing plan", secondary: "Explore our solutions" },
+    es: { eyebrow: "Mercado de Yiwu. Suministro global.", title: "Empiece en Yiwu.<br /><em>Escále en todo el mundo.</em>", copy: "Descubra las oportunidades de producto adecuadas en origen y conviértalas en un programa de abastecimiento controlado: coordinación de proveedores, calidad, consolidación y entrega global.", primary: "Cree su plan de abastecimiento en Yiwu", secondary: "Explore nuestras soluciones" },
+    "pt-BR": { eyebrow: "Mercado de Yiwu. Fornecimento global.", title: "Comece em Yiwu.<br /><em>Escale globalmente.</em>", copy: "Descubra as oportunidades certas de produto na origem e transforme-as em um programa de sourcing controlado: coordenação de fornecedores, qualidade, consolidação e entrega global.", primary: "Crie seu plano de sourcing em Yiwu", secondary: "Conheça nossas soluções" },
+    ru: { eyebrow: "Рынок Иу. Глобальные поставки.", title: "Начните в Иу.<br /><em>Масштабируйтесь по всему миру.</em>", copy: "Находите подходящие товары у источника и превращайте их в контролируемую программу закупок: координация поставщиков, контроль качества, консолидация и международная доставка.", primary: "Создать план закупок в Иу", secondary: "Посмотреть решения" },
+    "zh-CN": { eyebrow: "义乌市场 · 全球供应", title: "从义乌出发。<br /><em>服务全球增长。</em>", copy: "在源头发现合适的产品机会，再将其转化为可控的采购方案——供应商协同、质量管理、集货整合与全球交付。", primary: "制定义乌采购方案", secondary: "了解解决方案" },
+    fr: { eyebrow: "Marché de Yiwu. Approvisionnement mondial.", title: "Commencez à Yiwu.<br /><em>Développez-vous dans le monde.</em>", copy: "Identifiez les bonnes opportunités produit à la source, puis transformez-les en programme d’approvisionnement maîtrisé : coordination fournisseurs, qualité, consolidation et livraison mondiale.", primary: "Créer votre plan de sourcing à Yiwu", secondary: "Découvrir nos solutions" }
+  };
+  const marketHero = marketHeroTranslations[locale] || marketHeroTranslations.en;
+  const marketHeroContent = document.querySelector(".hero-slide--market .hero-content");
+  if (marketHeroContent) {
+    const marketEyebrow = marketHeroContent.querySelector(".eyebrow");
+    const marketHeading = marketHeroContent.querySelector("h1");
+    const marketCopy = marketHeroContent.querySelector(":scope > p");
+    const marketPrimary = marketHeroContent.querySelector(".button-primary");
+    const marketSecondary = marketHeroContent.querySelector(".text-link");
+    if (marketEyebrow) { const node = [...marketEyebrow.childNodes].find((item) => item.nodeType === Node.TEXT_NODE && item.nodeValue.trim()); if (node) node.nodeValue = ` ${marketHero.eyebrow} `; }
+    if (marketHeading) marketHeading.innerHTML = marketHero.title;
+    if (marketCopy) marketCopy.textContent = marketHero.copy;
+    if (marketPrimary) { const node = [...marketPrimary.childNodes].find((item) => item.nodeType === Node.TEXT_NODE && item.nodeValue.trim()); if (node) node.nodeValue = `${marketHero.primary} `; }
+    if (marketSecondary) { const node = [...marketSecondary.childNodes].find((item) => item.nodeType === Node.TEXT_NODE && item.nodeValue.trim()); if (node) node.nodeValue = `${marketHero.secondary} `; }
+  }
+
   setLeadingText("#solutions .eyebrow", "intro.eyebrow");
   setContent("#solutions h2", "intro.title", true);
   setContent("#solutions .lead", "intro.copy");
