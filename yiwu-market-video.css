@@ -5,5 +5,5 @@ main > .guide-video{display:none}
 .guide-hero .guide-video-copy{display:none}
 .guide-hero .guide-video-frame{background:#07182f;border:1px solid rgba(255,255,255,.22);box-shadow:0 24px 56px rgba(0,0,0,.28);line-height:0}
 .guide-hero .guide-video-frame video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#07182f;object-fit:cover}
-@media(min-width:801px){.guide-hero{padding:84px 0}.guide-hero-grid{grid-template-columns:minmax(0,1.12fr) minmax(360px,.88fr);gap:58px;align-items:center}}
+@media(min-width:801px){.guide-hero{padding:76px 0}.guide-hero-grid{grid-template-columns:minmax(0,1.12fr) minmax(400px,1fr);gap:46px;align-items:center}}
 @media(max-width:800px){.guide-hero .guide-video{width:100%;margin-top:2px}.guide-hero .guide-video-frame{box-shadow:0 17px 38px rgba(0,0,0,.24)}}
