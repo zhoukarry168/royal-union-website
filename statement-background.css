@@ -1,5 +1,5 @@
 /* Soft showroom collage behind the sourcing-control statement. */
-.statement{position:relative;background:linear-gradient(90deg,rgba(10,27,57,.62),rgba(22,55,108,.46)),url('assets/images/royal-union-showroom-montage.png') center/cover no-repeat}
+.statement{position:relative;background:linear-gradient(90deg,rgba(10,27,57,.62),rgba(22,55,108,.46)),url('assets/images/royal-union-showroom-montage.webp') center/cover no-repeat}
 .statement-inner{position:relative;z-index:1}
 .statement h2{max-width:900px;text-shadow:0 2px 18px rgba(4,15,36,.25)}
 .statement-copy{color:#e2eaf7;text-shadow:0 1px 10px rgba(4,15,36,.25)}
