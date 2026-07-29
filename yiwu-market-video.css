@@ -3,7 +3,9 @@ main > .guide-video{display:none}
 .guide-hero .guide-video{display:block;padding:0;background:transparent}
 .guide-hero .guide-video-grid{display:block}
 .guide-hero .guide-video-copy{display:none}
-.guide-hero .guide-video-frame{background:#07182f;border:1px solid rgba(255,255,255,.22);box-shadow:0 24px 56px rgba(0,0,0,.28);line-height:0}
+.guide-hero .guide-video-frame{position:relative;background:#07182f;border:1px solid rgba(255,255,255,.22);box-shadow:0 24px 56px rgba(0,0,0,.28);line-height:0}
 .guide-hero .guide-video-frame video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#07182f;object-fit:cover}
+.guide-full-video-link{position:absolute;right:12px;bottom:48px;z-index:2;padding:8px 10px;background:rgba(7,24,47,.85);border:1px solid rgba(255,255,255,.35);color:#fff;font:700 11px/1.1 var(--sans);letter-spacing:.01em;text-decoration:none}
+.guide-full-video-link:hover,.guide-full-video-link:focus-visible{background:var(--red);border-color:var(--red);outline:0}
 @media(min-width:801px){.guide-hero{padding:64px 0}.guide-hero-grid{grid-template-columns:minmax(0,.95fr) minmax(500px,1.05fr);gap:34px;align-items:center}}
-@media(max-width:800px){.guide-hero .guide-video{width:100%;margin-top:2px}.guide-hero .guide-video-frame{box-shadow:0 17px 38px rgba(0,0,0,.24)}}
+@media(max-width:800px){.guide-hero .guide-video{width:100%;margin-top:2px}.guide-hero .guide-video-frame{box-shadow:0 17px 38px rgba(0,0,0,.24)}.guide-full-video-link{right:9px;bottom:43px;font-size:10px}}
