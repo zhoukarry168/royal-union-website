@@ -4,5 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!heroGrid || !videoSection) return;
 
   heroGrid.append(videoSection);
+  const video = videoSection.querySelector("video");
+  if (video) {
+    video.muted = true;
+    video.autoplay = true;
+    video.preload = "metadata";
+    video.play().catch(() => {});
+  }
   document.body.classList.add("guide-video-in-hero");
 });
