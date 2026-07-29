@@ -49,6 +49,9 @@ document.querySelector('#legacy-inquiry-form')?.addEventListener('submit', (even
 const inquiryForm = document.querySelector('#inquiry-form');
 
 if (inquiryForm) {
+  const formEndpoint = 'https://formsubmit.co/ajax/sales5@royalunion.com.cn';
+  inquiryForm.action = formEndpoint;
+  inquiryForm.method = 'post';
   const submitButton = inquiryForm.querySelector('button[type="submit"]');
   const formStatus = document.createElement('p');
   formStatus.className = 'form-status';
@@ -81,7 +84,7 @@ if (inquiryForm) {
     payload._honey = '';
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/sales5@royalunion.com.cn', {
+      const response = await fetch(formEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(payload)
