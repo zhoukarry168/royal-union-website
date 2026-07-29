@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://ywmusourcing.com/sitemap.xml
+# AI-readable company and service summary: https://ywmusourcing.com/llms.txt
