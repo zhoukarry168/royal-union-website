@@ -8,13 +8,21 @@ document.addEventListener("DOMContentLoaded", () => {
   if (video) {
     const source = video.querySelector("source");
     const fullVideoUrl = source?.getAttribute("src");
-    if (source) source.setAttribute("src", "assets/videos/mu-group-in-yiwu-preview.mp4");
     video.muted = true;
     video.autoplay = true;
     video.loop = true;
-    video.preload = "auto";
-    video.load();
-    video.play().catch(() => {});
+    video.preload = "none";
+    const startPreview = () => {
+      if (source) source.setAttribute("src", "assets/videos/mu-group-in-yiwu-preview.mp4");
+      video.preload = "auto";
+      video.load();
+      video.play().catch(() => {});
+    };
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(startPreview, { timeout: 1200 });
+    } else {
+      window.setTimeout(startPreview, 700);
+    }
 
     if (fullVideoUrl) {
       const fullVideoLink = document.createElement("a");

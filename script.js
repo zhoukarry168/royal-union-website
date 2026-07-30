@@ -21,6 +21,7 @@ if (heroCarousel) {
 
   const showSlide = (nextIndex, announce = false) => {
     activeIndex = (nextIndex + slides.length) % slides.length;
+    slides[activeIndex]?.classList.add('is-media-ready');
     slides.forEach((slide, index) => {
       const isActive = index === activeIndex;
       slide.classList.toggle('is-active', isActive);
@@ -59,7 +60,22 @@ if (heroCarousel) {
   document.addEventListener('visibilitychange', () => { if (document.hidden) stopAutoplay(); else startAutoplay(); });
   reduceMotion.addEventListener?.('change', startAutoplay);
   showSlide(activeIndex);
+  if (!reduceMotion.matches) window.setTimeout(() => slides[1]?.classList.add('is-media-ready'), 3500);
   startAutoplay();
+}
+
+const deferredStatement = document.querySelector('.statement');
+if (deferredStatement) {
+  if ('IntersectionObserver' in window) {
+    const statementObserver = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      deferredStatement.classList.add('is-media-ready');
+      statementObserver.disconnect();
+    }, { rootMargin: '300px 0px' });
+    statementObserver.observe(deferredStatement);
+  } else {
+    deferredStatement.classList.add('is-media-ready');
+  }
 }
 const navGroups = Array.from(document.querySelectorAll('.nav-group'));
 const desktopHover = window.matchMedia('(hover: hover) and (pointer: fine)');
