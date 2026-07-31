@@ -3,7 +3,10 @@
   const params = new URLSearchParams(window.location.search);
   const requested = params.get("lang") || "en";
   const locale = supported.includes(requested) ? requested : "en";
-  const products = globalThis.ROYAL_UNION_PLUMBING_PRODUCTS || [];
+  const products = [
+    ...(globalThis.ROYAL_UNION_PLUMBING_PRODUCTS || []),
+    ...(globalThis.ROYAL_UNION_FAUCET_PRODUCTS || []),
+  ];
 
   const en = {
     "utility.based":"Based in Yiwu · Serving buyers worldwide","nav.home":"Home","nav.category":"Category Overview","nav.sewage":"Sewage Pipe","nav.faucet":"Faucet","nav.drain":"Drain Pipe","nav.cta":"Get a Sourcing Plan","whatsapp":"WhatsApp us","footer.copy":"China sourcing and supply-chain support for ambitious buyers worldwide.",
@@ -82,7 +85,46 @@
     }
   };
 
-  const strings = translations[locale] || en;
+  const faucetExtensions = {
+    en: {
+      "hero.route2":"41 products online",
+      "faq.a1":"The category includes sewage pipe products, faucets and drain pipes. The online catalogue currently provides flexible waste connectors, toilet relocation devices and 41 faucet product pages.",
+      "faucetCatalog.kicker":"Subcategory 02 · Faucet","faucetCatalog.title":"Faucet catalogue.<br /><em>One page per product.</em>","faucetCatalog.copy":"Open a faucet to review the supplied connection specification, unit weight, packing quantity, materials, factory packaging and carton information.","faucetCatalog.note":"Source note: 46 workbook rows are organized into 41 product pages because six rows describe variants of one PPR faucet. Final dimensions, units, samples, finishes, applicable requirements and commercial terms must be confirmed.",
+      "product.backFaucet":"Faucet","product.leadFaucet":"A faucet or valve listed in the supplied catalogue. Confirm the intended application, connection, body material, valve core, spout, finish and destination-market requirements before ordering.","product.backFaucetCatalog":"Back to faucet catalogue","product.relatedFaucet":"More faucet products","product.variantsTitle":"Supplied variants","spec.variant":"Variant","spec.notProvided":"Not provided"
+    },
+    es: {
+      "hero.route2":"41 productos disponibles",
+      "faq.a1":"La categoría incluye tubería de evacuación, grifería y tubería de desagüe. El catálogo online ofrece conectores flexibles, desplazadores para inodoro y 41 páginas de grifería.",
+      "faucetCatalog.kicker":"Subcategoría 02 · Grifería","faucetCatalog.title":"Catálogo de grifería.<br /><em>Una página por producto.</em>","faucetCatalog.copy":"Abra un producto para revisar conexión, peso unitario, cantidad, materiales, embalaje de fábrica e información de caja suministrados.","faucetCatalog.note":"Nota: 46 filas de la hoja se organizan en 41 páginas porque seis filas son variantes de un mismo grifo PPR. Medidas, unidades, muestras, acabados, requisitos aplicables y condiciones deben confirmarse.",
+      "product.backFaucet":"Grifería","product.leadFaucet":"Grifo o válvula del catálogo suministrado. Confirme aplicación, conexión, material del cuerpo, cartucho, caño, acabado y requisitos del mercado antes de comprar.","product.backFaucetCatalog":"Volver al catálogo de grifería","product.relatedFaucet":"Más productos de grifería","product.variantsTitle":"Variantes suministradas","spec.variant":"Variante","spec.notProvided":"No proporcionado"
+    },
+    "pt-BR": {
+      "hero.route2":"41 produtos disponíveis",
+      "faq.a1":"A categoria inclui tubos de esgoto, torneiras e tubos de drenagem. O catálogo online oferece conectores flexíveis, deslocadores para vaso sanitário e 41 páginas de torneiras.",
+      "faucetCatalog.kicker":"Subcategoria 02 · Torneiras","faucetCatalog.title":"Catálogo de torneiras.<br /><em>Uma página por produto.</em>","faucetCatalog.copy":"Abra um produto para revisar conexão, peso unitário, quantidade, materiais, embalagem de fábrica e dados da caixa fornecidos.","faucetCatalog.note":"Nota: 46 linhas da planilha foram organizadas em 41 páginas porque seis linhas são variantes de uma torneira PPR. Medidas, unidades, amostras, acabamentos, requisitos aplicáveis e termos precisam ser confirmados.",
+      "product.backFaucet":"Torneiras","product.leadFaucet":"Torneira ou válvula do catálogo enviado. Confirme aplicação, conexão, material do corpo, cartucho, bica, acabamento e requisitos do mercado antes do pedido.","product.backFaucetCatalog":"Voltar ao catálogo de torneiras","product.relatedFaucet":"Mais torneiras","product.variantsTitle":"Variantes fornecidas","spec.variant":"Variante","spec.notProvided":"Não fornecido"
+    },
+    ru: {
+      "hero.route2":"41 товар онлайн",
+      "faq.a1":"Категория включает канализационные трубы, смесители и сливные трубы. Онлайн-каталог содержит гибкие соединители, переходники для унитаза и 41 страницу смесителей.",
+      "faucetCatalog.kicker":"Подкатегория 02 · Смесители","faucetCatalog.title":"Каталог смесителей.<br /><em>Отдельная страница для каждого товара.</em>","faucetCatalog.copy":"Откройте товар, чтобы проверить соединение, вес, количество, материалы, заводскую упаковку и данные коробки.","faucetCatalog.note":"Примечание: 46 строк таблицы объединены в 41 страницу, поскольку шесть строк описывают варианты одного крана PPR. Размеры, единицы, образцы, покрытия, требования и условия нужно подтвердить.",
+      "product.backFaucet":"Смесители","product.leadFaucet":"Кран или вентиль из предоставленного каталога. До заказа подтвердите назначение, соединение, материал корпуса, картридж, излив, покрытие и требования рынка.","product.backFaucetCatalog":"Назад к каталогу смесителей","product.relatedFaucet":"Другие смесители","product.variantsTitle":"Предоставленные варианты","spec.variant":"Вариант","spec.notProvided":"Не указано"
+    },
+    "zh-CN": {
+      "hero.route2":"41款产品已上线",
+      "faq.a1":"该类目包含排污管、水龙头和下水管。目前线上目录已提供柔性排污连接管、马桶移位器和41个水龙头产品页。",
+      "faucetCatalog.kicker":"子类目 02 · 水龙头","faucetCatalog.title":"水龙头产品目录。<br /><em>每款产品独立页面。</em>","faucetCatalog.copy":"点击产品可查看资料表提供的接口规格、单重、装箱数量、材质、工厂包装和外箱信息。","faucetCatalog.note":"资料说明：表格中的46行整理为41个产品页，其中6行属于同一款PPR水龙头的不同规格。最终尺寸、单位、样品、表面处理、适用要求和商务条款需进一步确认。",
+      "product.backFaucet":"水龙头","product.leadFaucet":"资料表中列出的水龙头或阀门。下单前需确认使用场景、接口、主体材质、阀芯、出水嘴、表面处理和目的地市场要求。","product.backFaucetCatalog":"返回水龙头目录","product.relatedFaucet":"更多水龙头产品","product.variantsTitle":"资料表提供的规格变体","spec.variant":"规格变体","spec.notProvided":"未提供"
+    },
+    fr: {
+      "hero.route2":"41 produits en ligne",
+      "faq.a1":"La catégorie comprend évacuation sanitaire, robinetterie et tuyaux d’évacuation. Le catalogue en ligne propose des raccords flexibles, des raccords excentrés pour WC et 41 pages de robinetterie.",
+      "faucetCatalog.kicker":"Sous-catégorie 02 · Robinetterie","faucetCatalog.title":"Catalogue de robinetterie.<br /><em>Une page par produit.</em>","faucetCatalog.copy":"Ouvrez un produit pour vérifier raccord, poids, quantité, matériaux, emballage usine et informations carton fournis.","faucetCatalog.note":"Note : les 46 lignes du fichier sont organisées en 41 pages, car six lignes décrivent des variantes d’un même robinet PPR. Dimensions, unités, échantillons, finitions, exigences et conditions doivent être confirmés.",
+      "product.backFaucet":"Robinetterie","product.leadFaucet":"Robinet ou vanne du catalogue fourni. Confirmez usage, raccord, matériau du corps, cartouche, bec, finition et exigences du marché avant commande.","product.backFaucetCatalog":"Retour au catalogue de robinetterie","product.relatedFaucet":"Autres produits de robinetterie","product.variantsTitle":"Variantes fournies","spec.variant":"Variante","spec.notProvided":"Non fourni"
+    }
+  };
+
+  const strings = { ...en, ...(translations[locale] || en), ...(faucetExtensions[locale] || faucetExtensions.en) };
   document.documentElement.lang = locale;
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const value = strings[element.dataset.i18n];
@@ -103,7 +145,11 @@
     const name = product.names[locale] || product.names.en;
     document.querySelectorAll("[data-current-product-name]").forEach((element) => { element.textContent = name; });
     document.querySelectorAll("[data-current-product-code]").forEach((element) => { element.textContent = product.code; });
-    const lead = product.kind === "relocationDevice" ? strings["product.leadRelocation"] : strings["product.leadDrain"];
+    const lead = product.id.startsWith("ru-fa-")
+      ? strings["product.leadFaucet"]
+      : product.kind === "relocationDevice"
+        ? strings["product.leadRelocation"]
+        : strings["product.leadDrain"];
     document.querySelectorAll("[data-product-lead]").forEach((element) => { element.textContent = lead; });
     const title = `${name} | ROYAL UNION`;
     const description = `${name}: supplied specifications, packing information and China sourcing enquiry with ROYAL UNION.`;

@@ -16,3 +16,6 @@
 @keyframes route-flow{to{stroke-dashoffset:-40}}@keyframes route-pulse{0%{transform:scale(.55);opacity:.9}70%,100%{transform:scale(1.25);opacity:0}}
 @media(max-width:800px){.global-reach{padding:74px 0}.global-reach-grid{grid-template-columns:1fr;gap:35px}.global-reach-stats{gap:15px}.global-reach-stats strong{font-size:14px}.global-route-map{min-height:auto;padding:8px}.route-map-badge{bottom:15px;left:15px;font-size:10px}.route-label{font-size:8px}.route-label--origin{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.buyer-grid article,.capability-grid article:not(.capability-feature),.js-enabled .reveal-on-scroll,.process-list li,.process-list li::before{transition:none}.buyer-grid article:hover,.capability-grid article:not(.capability-feature):hover,.process-list li.is-visible{transform:none;box-shadow:none}.route-line,.route-pulse{animation:none}}
+
+/* Keep the eyebrow rule separate from its text label. */
+.eyebrow>span:not(:first-child){display:inline;width:auto;height:auto;background:transparent;flex:0 1 auto}.section-heading .eyebrow,.faq-intro .eyebrow{margin-bottom:18px}.section-heading h2,.faq-intro h2{clear:both}
