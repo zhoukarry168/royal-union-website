@@ -14,7 +14,7 @@
     es: {
       description: "ROYAL UNION es su equipo de abastecimiento y cadena de suministro en China para comercio electrónico, mayoristas y minoristas.",
       "utility.based": "Con base en Yiwu · Al servicio de compradores de todo el mundo",
-      "nav.solutions": "Soluciones", "nav.capabilities": "Capacidades", "nav.categories": "Categorías", "nav.hub": "Centro de abastecimiento", "nav.why": "POR QUÉ ROYAL UNION", "nav.cta": "Obtenga un plan de abastecimiento",
+      "nav.solutions": "Soluciones", "nav.capabilities": "Capacidades", "nav.categories": "Categorías", "nav.plumbing": "Fontanería y equipamiento de baño", "nav.hub": "Centro de abastecimiento", "nav.why": "POR QUÉ ROYAL UNION", "nav.cta": "Obtenga un plan de abastecimiento",
       "hero.eyebrow": "Abastecimiento en China, con control", "hero.title": "Su equipo de abastecimiento<br />en China. <em>Hecho para crecer.</em>", "hero.copy": "ROYAL UNION ayuda a marcas de comercio electrónico, importadores y minoristas a abastecerse mejor, desde desarrollo de producto y control de calidad hasta consolidación y entrega global.", "hero.primary": "Obtenga su plan de abastecimiento", "hero.secondary": "Explore nuestras capacidades",
       "intro.eyebrow": "Para compradores con ambición", "intro.title": "Un socio de cadena de suministro.<br /><em>Distintas rutas de crecimiento.</em>", "intro.copy": "Tanto si lanza una línea de comercio electrónico en Estados Unidos como si consolida pedidos mayoristas para América Latina, Europa del Este o Rusia, adaptamos la ruta de abastecimiento a su modelo de negocio.",
       "statement.title": "No solo encontramos productos.<br />Hacemos que el abastecimiento en China sea <em>más fácil de controlar.</em>", "statement.copy": "Un equipo local debe reducir la complejidad operativa, no añadir otra capa de incertidumbre. Por eso cada servicio se basa en visibilidad, calidad y ejecución.",
@@ -29,7 +29,7 @@
     "pt-BR": {
       description: "ROYAL UNION é sua equipe de sourcing e cadeia de suprimentos na China para e-commerce, atacado e varejo.",
       "utility.based": "Baseados em Yiwu · Atendendo compradores no mundo todo",
-      "nav.solutions": "Soluções", "nav.capabilities": "Capacidades", "nav.categories": "Categorias", "nav.hub": "Centro de sourcing", "nav.why": "POR QUE A ROYAL UNION", "nav.cta": "Obtenha um plano de sourcing",
+      "nav.solutions": "Soluções", "nav.capabilities": "Capacidades", "nav.categories": "Categorias", "nav.plumbing": "Hidráulica e acessórios para banheiro", "nav.hub": "Centro de sourcing", "nav.why": "POR QUE A ROYAL UNION", "nav.cta": "Obtenha um plano de sourcing",
       "hero.eyebrow": "Sourcing na China, com controle", "hero.title": "Sua equipe de sourcing<br />na China. <em>Feita para escalar.</em>", "hero.copy": "A ROYAL UNION ajuda marcas de e-commerce, importadores e varejistas a comprar melhor — do desenvolvimento de produto e controle de qualidade à consolidação e entrega global.", "hero.primary": "Obtenha seu plano de sourcing", "hero.secondary": "Conheça nossas capacidades",
       "intro.eyebrow": "Para compradores ambiciosos", "intro.title": "Um parceiro de cadeia de suprimentos.<br /><em>Diferentes rotas para crescer.</em>", "intro.copy": "Seja lançando uma linha de e-commerce nos Estados Unidos ou consolidando pedidos de atacado para a América Latina, Europa Oriental ou Rússia, adaptamos a rota de sourcing ao seu modelo de negócio.",
       "statement.title": "Não apenas encontramos produtos.<br />Tornamos o sourcing na China <em>mais fácil de controlar.</em>", "statement.copy": "Uma equipe local de sourcing deve reduzir a complexidade operacional, não adicionar outra camada de incerteza. Por isso, cada serviço é construído sobre visibilidade, qualidade e execução.",
@@ -44,7 +44,7 @@
     ru: {
       description: "ROYAL UNION — ваша команда по закупкам и цепочке поставок в Китае для e-commerce, опта и розницы.",
       "utility.based": "Работаем из Иу · Помогаем покупателям по всему миру",
-      "nav.solutions": "Решения", "nav.capabilities": "Возможности", "nav.categories": "Категории", "nav.hub": "Центр закупок", "nav.why": "ПОЧЕМУ ROYAL UNION", "nav.cta": "Получить план закупок",
+      "nav.solutions": "Решения", "nav.capabilities": "Возможности", "nav.categories": "Категории", "nav.plumbing": "Сантехника и оборудование для ванной", "nav.hub": "Центр закупок", "nav.why": "ПОЧЕМУ ROYAL UNION", "nav.cta": "Получить план закупок",
       "hero.eyebrow": "Закупки в Китае под контролем", "hero.title": "Ваша команда по закупкам<br />в Китае. <em>Создана для роста.</em>", "hero.copy": "ROYAL UNION помогает e-commerce брендам, импортёрам и ритейлерам закупать эффективнее — от разработки товара и контроля качества до консолидации и международной доставки.", "hero.primary": "Получить план закупок", "hero.secondary": "Наши возможности",
       "intro.eyebrow": "Для амбициозных покупателей", "intro.title": "Один партнёр по цепочке поставок.<br /><em>Разные маршруты к росту.</em>", "intro.copy": "Запускаете ли вы e-commerce линейку в США или консолидируете оптовые заказы для Латинской Америки, Восточной Европы или России — мы адаптируем маршрут закупок под вашу бизнес-модель.",
       "statement.title": "Мы не просто находим товары.<br />Мы делаем закупки в Китае <em>проще для контроля.</em>", "statement.copy": "Локальная команда по закупкам должна снижать операционную сложность, а не создавать новую неопределённость. Поэтому каждый сервис строится на прозрачности, качестве и исполнении.",
@@ -59,7 +59,7 @@
     "zh-CN": {
       description: "ROYAL UNION 为跨境电商、进口商、批发和零售客户提供中国采购及供应链服务。",
       "utility.based": "立足义乌 · 服务全球买家",
-      "nav.solutions": "解决方案", "nav.capabilities": "服务能力", "nav.categories": "产品品类", "nav.hub": "采购中心", "nav.why": "为什么选择 ROYAL UNION", "nav.cta": "获取采购方案",
+      "nav.solutions": "解决方案", "nav.capabilities": "服务能力", "nav.categories": "产品品类", "nav.plumbing": "管道与卫浴五金", "nav.hub": "采购中心", "nav.why": "为什么选择 ROYAL UNION", "nav.cta": "获取采购方案",
       "hero.eyebrow": "可控的中国采购", "hero.title": "您的中国采购<br />团队。<em>为增长而生。</em>", "hero.copy": "ROYAL UNION 帮助跨境电商品牌、进口商和零售商更高效地完成采购——从产品开发、品质管理到集货整合与全球交付。", "hero.primary": "获取采购方案", "hero.secondary": "了解服务能力",
       "intro.eyebrow": "为有雄心的买家而设", "intro.title": "一个供应链伙伴。<br /><em>多条增长路径。</em>", "intro.copy": "无论您是在美国推出电商产品线，还是为拉美、东欧或俄罗斯整合批发订单，我们都会根据您的商业模式制定合适的采购路径。",
       "statement.title": "我们不只是寻找产品。<br />我们让中国采购 <em>更容易掌控。</em>", "statement.copy": "本地采购团队应当降低运营复杂度，而不是增加不确定性。因此，每一项服务都围绕透明度、质量和执行力展开。",
@@ -74,7 +74,7 @@
     fr: {
       description: "ROYAL UNION est votre équipe d'approvisionnement et de chaîne logistique en Chine pour l'e-commerce, le commerce de gros et le retail.",
       "utility.based": "Basés à Yiwu · Au service des acheteurs du monde entier",
-      "nav.solutions": "Solutions", "nav.capabilities": "Expertise", "nav.categories": "Catégories", "nav.hub": "Hub d'approvisionnement", "nav.why": "POURQUOI ROYAL UNION", "nav.cta": "Obtenir un plan d'approvisionnement",
+      "nav.solutions": "Solutions", "nav.capabilities": "Expertise", "nav.categories": "Catégories", "nav.plumbing": "Plomberie et équipements de salle de bains", "nav.hub": "Hub d'approvisionnement", "nav.why": "POURQUOI ROYAL UNION", "nav.cta": "Obtenir un plan d'approvisionnement",
       "hero.eyebrow": "L'approvisionnement en Chine, sous contrôle", "hero.title": "Votre équipe d'approvisionnement<br />en Chine. <em>Conçue pour grandir.</em>", "hero.copy": "ROYAL UNION aide les marques e-commerce, importateurs et distributeurs à mieux s'approvisionner — du développement produit et du contrôle qualité à la consolidation et à la livraison mondiale.", "hero.primary": "Obtenir votre plan d'approvisionnement", "hero.secondary": "Découvrir notre expertise",
       "intro.eyebrow": "Pour les acheteurs ambitieux", "intro.title": "Un partenaire de chaîne logistique.<br /><em>Différentes voies de croissance.</em>", "intro.copy": "Que vous lanciez une ligne e-commerce aux États-Unis ou consolidiez des commandes de gros pour l'Amérique latine, l'Europe de l'Est ou la Russie, nous adaptons le parcours d'approvisionnement à votre modèle économique.",
       "statement.title": "Nous ne trouvons pas seulement des produits.<br />Nous rendons l'approvisionnement en Chine <em>plus facile à piloter.</em>", "statement.copy": "Une équipe locale doit réduire la complexité opérationnelle, et non ajouter de l'incertitude. C'est pourquoi chaque service est conçu autour de la visibilité, de la qualité et de l'exécution.",
@@ -139,6 +139,7 @@
   setContent(".utility-inner > span", "utility.based");
   ["nav.solutions", "nav.capabilities", "nav.categories", "nav.hub", "nav.why"].forEach((key, index) => setLeadingText(`.nav-group:nth-of-type(${index + 1}) summary`, key));
   setLeadingText(".nav-cta", "nav.cta");
+  setContent(".category-plumbing-link", "nav.plumbing");
 
   setLeadingText(".hero-content > .eyebrow", "hero.eyebrow");
   setContent(".hero-content h1", "hero.title", true);
@@ -243,6 +244,12 @@
 
   document.querySelectorAll('a[href="blog.html"]').forEach((link) => {
     if (locale !== defaultLocale) link.href = `blog.html?lang=${encodeURIComponent(locale)}`;
+  });
+
+  document.querySelectorAll('.category-plumbing-link').forEach((link) => {
+    link.href = locale === defaultLocale
+      ? 'plumbing-bathroom-fixtures.html'
+      : `plumbing-bathroom-fixtures.html?lang=${encodeURIComponent(locale)}`;
   });
 
   document.querySelectorAll("[data-locale-name]").forEach((element) => {
