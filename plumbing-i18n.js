@@ -6,6 +6,7 @@
   const products = [
     ...(globalThis.ROYAL_UNION_PLUMBING_PRODUCTS || []),
     ...(globalThis.ROYAL_UNION_FAUCET_PRODUCTS || []),
+    ...(globalThis.ROYAL_UNION_DRAIN_PIPE_PRODUCTS || []),
   ];
 
   const en = {
@@ -88,37 +89,49 @@
   const faucetExtensions = {
     en: {
       "hero.route2":"41 products online",
-      "faq.a1":"The category includes sewage pipe products, faucets and drain pipes. The online catalogue currently provides flexible waste connectors, toilet relocation devices and 41 faucet product pages.",
+      "faq.a1":"The category includes sewage pipe products, faucets and drain pipes. The online catalogue currently provides 12 sewage pipe products, 41 faucet products and 7 drain pipe products.",
+      "hero.route3":"7 products online","drainCatalog.kicker":"Subcategory 03 · Drain Pipe","drainCatalog.title":"Drain pipe catalogue.<br /><em>One page per product.</em>","drainCatalog.copy":"Open a drain pipe product to review the supplied specification, packing quantity, material, factory packaging and carton information.","drainCatalog.note":"Source note: values come from the uploaded Drain Pipe workbook. Unit weight was not provided for these seven products, and the carton value 0.037 for PVC Tiger Pipe has no stated unit. Final dimensions, units, samples and commercial terms must be confirmed.",
+      "product.backDrain":"Drain Pipe","product.leadDrainProduct":"A drain pipe or basin waste component listed in the supplied catalogue. Confirm the fixture, connection, dimensions, material, sealing method and destination-market requirements before ordering.","product.backDrainCatalog":"Back to drain pipe catalogue","product.relatedDrain":"More drain pipe products",
       "faucetCatalog.kicker":"Subcategory 02 · Faucet","faucetCatalog.title":"Faucet catalogue.<br /><em>One page per product.</em>","faucetCatalog.copy":"Open a faucet to review the supplied connection specification, unit weight, packing quantity, materials, factory packaging and carton information.","faucetCatalog.note":"Source note: 46 workbook rows are organized into 41 product pages because six rows describe variants of one PPR faucet. Final dimensions, units, samples, finishes, applicable requirements and commercial terms must be confirmed.",
       "product.backFaucet":"Faucet","product.leadFaucet":"A faucet or valve listed in the supplied catalogue. Confirm the intended application, connection, body material, valve core, spout, finish and destination-market requirements before ordering.","product.backFaucetCatalog":"Back to faucet catalogue","product.relatedFaucet":"More faucet products","product.variantsTitle":"Supplied variants","spec.variant":"Variant","spec.notProvided":"Not provided"
     },
     es: {
       "hero.route2":"41 productos disponibles",
-      "faq.a1":"La categoría incluye tubería de evacuación, grifería y tubería de desagüe. El catálogo online ofrece conectores flexibles, desplazadores para inodoro y 41 páginas de grifería.",
+      "faq.a1":"La categoría incluye tubería de evacuación, grifería y tubería de desagüe. El catálogo online ofrece 12 productos de evacuación, 41 productos de grifería y 7 productos de desagüe.",
+      "hero.route3":"7 productos disponibles","drainCatalog.kicker":"Subcategoría 03 · Tubería de desagüe","drainCatalog.title":"Catálogo de tuberías de desagüe.<br /><em>Una página por producto.</em>","drainCatalog.copy":"Abra un producto para revisar especificación, cantidad, material, embalaje de fábrica e información de caja suministrados.","drainCatalog.note":"Nota: los valores proceden de la hoja de tuberías de desagüe. No se proporcionó peso unitario para estos siete productos y el valor de caja 0.037 del PVC Tiger Pipe no indica unidad. Medidas, unidades, muestras y términos deben confirmarse.",
+      "product.backDrain":"Tubería de desagüe","product.leadDrainProduct":"Tubería de desagüe o componente de lavabo del catálogo. Confirme aparato, conexión, medidas, material, sellado y requisitos del mercado antes de comprar.","product.backDrainCatalog":"Volver al catálogo de desagüe","product.relatedDrain":"Más productos de desagüe",
       "faucetCatalog.kicker":"Subcategoría 02 · Grifería","faucetCatalog.title":"Catálogo de grifería.<br /><em>Una página por producto.</em>","faucetCatalog.copy":"Abra un producto para revisar conexión, peso unitario, cantidad, materiales, embalaje de fábrica e información de caja suministrados.","faucetCatalog.note":"Nota: 46 filas de la hoja se organizan en 41 páginas porque seis filas son variantes de un mismo grifo PPR. Medidas, unidades, muestras, acabados, requisitos aplicables y condiciones deben confirmarse.",
       "product.backFaucet":"Grifería","product.leadFaucet":"Grifo o válvula del catálogo suministrado. Confirme aplicación, conexión, material del cuerpo, cartucho, caño, acabado y requisitos del mercado antes de comprar.","product.backFaucetCatalog":"Volver al catálogo de grifería","product.relatedFaucet":"Más productos de grifería","product.variantsTitle":"Variantes suministradas","spec.variant":"Variante","spec.notProvided":"No proporcionado"
     },
     "pt-BR": {
       "hero.route2":"41 produtos disponíveis",
-      "faq.a1":"A categoria inclui tubos de esgoto, torneiras e tubos de drenagem. O catálogo online oferece conectores flexíveis, deslocadores para vaso sanitário e 41 páginas de torneiras.",
+      "faq.a1":"A categoria inclui tubos de esgoto, torneiras e tubos de drenagem. O catálogo online oferece 12 produtos de esgoto, 41 torneiras e 7 produtos de drenagem.",
+      "hero.route3":"7 produtos disponíveis","drainCatalog.kicker":"Subcategoria 03 · Tubos de drenagem","drainCatalog.title":"Catálogo de tubos de drenagem.<br /><em>Uma página por produto.</em>","drainCatalog.copy":"Abra um produto para revisar especificação, quantidade, material, embalagem de fábrica e dados da caixa fornecidos.","drainCatalog.note":"Nota: os valores vêm da planilha de tubos de drenagem. O peso unitário não foi informado para os sete produtos e o valor de caixa 0.037 do PVC Tiger Pipe não possui unidade. Medidas, unidades, amostras e termos precisam ser confirmados.",
+      "product.backDrain":"Tubos de drenagem","product.leadDrainProduct":"Tubo de drenagem ou componente de lavatório do catálogo. Confirme louça, conexão, medidas, material, vedação e requisitos do mercado antes do pedido.","product.backDrainCatalog":"Voltar ao catálogo de drenagem","product.relatedDrain":"Mais produtos de drenagem",
       "faucetCatalog.kicker":"Subcategoria 02 · Torneiras","faucetCatalog.title":"Catálogo de torneiras.<br /><em>Uma página por produto.</em>","faucetCatalog.copy":"Abra um produto para revisar conexão, peso unitário, quantidade, materiais, embalagem de fábrica e dados da caixa fornecidos.","faucetCatalog.note":"Nota: 46 linhas da planilha foram organizadas em 41 páginas porque seis linhas são variantes de uma torneira PPR. Medidas, unidades, amostras, acabamentos, requisitos aplicáveis e termos precisam ser confirmados.",
       "product.backFaucet":"Torneiras","product.leadFaucet":"Torneira ou válvula do catálogo enviado. Confirme aplicação, conexão, material do corpo, cartucho, bica, acabamento e requisitos do mercado antes do pedido.","product.backFaucetCatalog":"Voltar ao catálogo de torneiras","product.relatedFaucet":"Mais torneiras","product.variantsTitle":"Variantes fornecidas","spec.variant":"Variante","spec.notProvided":"Não fornecido"
     },
     ru: {
       "hero.route2":"41 товар онлайн",
-      "faq.a1":"Категория включает канализационные трубы, смесители и сливные трубы. Онлайн-каталог содержит гибкие соединители, переходники для унитаза и 41 страницу смесителей.",
+      "faq.a1":"Категория включает канализационные трубы, смесители и сливные трубы. Онлайн-каталог содержит 12 канализационных товаров, 41 смеситель и 7 сливных товаров.",
+      "hero.route3":"7 товаров онлайн","drainCatalog.kicker":"Подкатегория 03 · Сливные трубы","drainCatalog.title":"Каталог сливных труб.<br /><em>Отдельная страница для каждого товара.</em>","drainCatalog.copy":"Откройте товар, чтобы проверить спецификацию, количество, материал, заводскую упаковку и данные коробки.","drainCatalog.note":"Примечание: данные взяты из загруженной таблицы. Вес семи товаров не указан, а значение коробки 0.037 для PVC Tiger Pipe не имеет единицы. Размеры, единицы, образцы и условия нужно подтвердить.",
+      "product.backDrain":"Сливные трубы","product.leadDrainProduct":"Сливная труба или компонент для раковины из каталога. До заказа подтвердите сантехнику, соединение, размеры, материал, уплотнение и требования рынка.","product.backDrainCatalog":"Назад к каталогу сливных труб","product.relatedDrain":"Другие сливные товары",
       "faucetCatalog.kicker":"Подкатегория 02 · Смесители","faucetCatalog.title":"Каталог смесителей.<br /><em>Отдельная страница для каждого товара.</em>","faucetCatalog.copy":"Откройте товар, чтобы проверить соединение, вес, количество, материалы, заводскую упаковку и данные коробки.","faucetCatalog.note":"Примечание: 46 строк таблицы объединены в 41 страницу, поскольку шесть строк описывают варианты одного крана PPR. Размеры, единицы, образцы, покрытия, требования и условия нужно подтвердить.",
       "product.backFaucet":"Смесители","product.leadFaucet":"Кран или вентиль из предоставленного каталога. До заказа подтвердите назначение, соединение, материал корпуса, картридж, излив, покрытие и требования рынка.","product.backFaucetCatalog":"Назад к каталогу смесителей","product.relatedFaucet":"Другие смесители","product.variantsTitle":"Предоставленные варианты","spec.variant":"Вариант","spec.notProvided":"Не указано"
     },
     "zh-CN": {
       "hero.route2":"41款产品已上线",
-      "faq.a1":"该类目包含排污管、水龙头和下水管。目前线上目录已提供柔性排污连接管、马桶移位器和41个水龙头产品页。",
+      "faq.a1":"该类目包含排污管、水龙头和下水管。目前线上目录已提供12款排污管产品、41款水龙头产品和7款下水管产品。",
+      "hero.route3":"7款产品已上线","drainCatalog.kicker":"子类目 03 · 下水管","drainCatalog.title":"下水管产品目录。<br /><em>每款产品独立页面。</em>","drainCatalog.copy":"点击产品可查看资料表提供的规格、装箱数量、材质、工厂包装和外箱信息。","drainCatalog.note":"资料说明：数据来自您上传的下水管资料表。这7款产品均未提供单重；PVC Tiger Pipe 的箱规栏仅填写0.037且未注明单位。最终尺寸、单位、样品和商务条款需进一步确认。",
+      "product.backDrain":"下水管","product.leadDrainProduct":"资料表中列出的下水管或面盆排水组件。下单前需确认适配产品、接口、尺寸、材质、密封方式和目的地市场要求。","product.backDrainCatalog":"返回下水管目录","product.relatedDrain":"更多下水管产品",
       "faucetCatalog.kicker":"子类目 02 · 水龙头","faucetCatalog.title":"水龙头产品目录。<br /><em>每款产品独立页面。</em>","faucetCatalog.copy":"点击产品可查看资料表提供的接口规格、单重、装箱数量、材质、工厂包装和外箱信息。","faucetCatalog.note":"资料说明：表格中的46行整理为41个产品页，其中6行属于同一款PPR水龙头的不同规格。最终尺寸、单位、样品、表面处理、适用要求和商务条款需进一步确认。",
       "product.backFaucet":"水龙头","product.leadFaucet":"资料表中列出的水龙头或阀门。下单前需确认使用场景、接口、主体材质、阀芯、出水嘴、表面处理和目的地市场要求。","product.backFaucetCatalog":"返回水龙头目录","product.relatedFaucet":"更多水龙头产品","product.variantsTitle":"资料表提供的规格变体","spec.variant":"规格变体","spec.notProvided":"未提供"
     },
     fr: {
       "hero.route2":"41 produits en ligne",
-      "faq.a1":"La catégorie comprend évacuation sanitaire, robinetterie et tuyaux d’évacuation. Le catalogue en ligne propose des raccords flexibles, des raccords excentrés pour WC et 41 pages de robinetterie.",
+      "faq.a1":"La catégorie comprend évacuation sanitaire, robinetterie et tuyaux d’évacuation. Le catalogue en ligne propose 12 produits d’évacuation sanitaire, 41 produits de robinetterie et 7 produits de drainage.",
+      "hero.route3":"7 produits en ligne","drainCatalog.kicker":"Sous-catégorie 03 · Tuyaux d’évacuation","drainCatalog.title":"Catalogue de tuyaux d’évacuation.<br /><em>Une page par produit.</em>","drainCatalog.copy":"Ouvrez un produit pour vérifier spécification, quantité, matériau, emballage usine et informations carton fournis.","drainCatalog.note":"Note : les valeurs viennent du fichier chargé. Le poids unitaire n’est pas fourni pour ces sept produits et la valeur carton 0.037 du PVC Tiger Pipe n’indique aucune unité. Dimensions, unités, échantillons et conditions doivent être confirmés.",
+      "product.backDrain":"Tuyaux d’évacuation","product.leadDrainProduct":"Tuyau d’évacuation ou composant de lavabo du catalogue. Confirmez équipement, raccord, dimensions, matériau, étanchéité et exigences du marché avant commande.","product.backDrainCatalog":"Retour au catalogue de drainage","product.relatedDrain":"Autres produits de drainage",
       "faucetCatalog.kicker":"Sous-catégorie 02 · Robinetterie","faucetCatalog.title":"Catalogue de robinetterie.<br /><em>Une page par produit.</em>","faucetCatalog.copy":"Ouvrez un produit pour vérifier raccord, poids, quantité, matériaux, emballage usine et informations carton fournis.","faucetCatalog.note":"Note : les 46 lignes du fichier sont organisées en 41 pages, car six lignes décrivent des variantes d’un même robinet PPR. Dimensions, unités, échantillons, finitions, exigences et conditions doivent être confirmés.",
       "product.backFaucet":"Robinetterie","product.leadFaucet":"Robinet ou vanne du catalogue fourni. Confirmez usage, raccord, matériau du corps, cartouche, bec, finition et exigences du marché avant commande.","product.backFaucetCatalog":"Retour au catalogue de robinetterie","product.relatedFaucet":"Autres produits de robinetterie","product.variantsTitle":"Variantes fournies","spec.variant":"Variante","spec.notProvided":"Non fourni"
     }
@@ -145,7 +158,9 @@
     const name = product.names[locale] || product.names.en;
     document.querySelectorAll("[data-current-product-name]").forEach((element) => { element.textContent = name; });
     document.querySelectorAll("[data-current-product-code]").forEach((element) => { element.textContent = product.code; });
-    const lead = product.id.startsWith("ru-fa-")
+    const lead = product.id.startsWith("ru-dp-")
+      ? strings["product.leadDrainProduct"]
+      : product.id.startsWith("ru-fa-")
       ? strings["product.leadFaucet"]
       : product.kind === "relocationDevice"
         ? strings["product.leadRelocation"]

@@ -17,7 +17,7 @@ Last reviewed: 2026-07-31
 ## What ROYAL UNION does
 
 - Product sourcing in Yiwu and across China
-- Plumbing and bathroom fixture sourcing, including sewage pipe products, a 41-product faucet catalogue and project-based drain pipe sourcing
+- Plumbing and bathroom fixture sourcing, including 12 sewage pipe products, 41 faucet products and 7 drain pipe products with standalone catalogue pages
 - Retail assortment planning and new-store sourcing support
 - Product development and packaging support
 - Supplier and order management
@@ -54,6 +54,10 @@ Yes. ROYAL UNION can help translate a store format, target market, price positio
 
 Yes. The Plumbing and Bathroom Fixtures page links to 41 standalone faucet and valve product pages. Each page summarizes the supplied connection specification, unit weight when provided, packing quantity, material, factory packaging and carton information. Final dimensions, units, samples, finishes, compliance needs and commercial terms require confirmation.
 
+### Does ROYAL UNION have an online drain pipe catalogue?
+
+Yes. The Plumbing and Bathroom Fixtures page links to 7 standalone drain pipe and basin waste product pages. Each page summarizes the supplied specification, packing quantity, material, factory packaging and carton information. Unit weight was not provided in the source workbook, and exact dimensions, units, samples, compliance needs and commercial terms require confirmation.
+
 ### Does ROYAL UNION issue product certificates?
 
 No. ROYAL UNION can coordinate applicable supplier documents, technical records and third-party testing within the agreed project scope. Certificates, declarations and test reports are issued by the relevant supplier, laboratory or authority, and exact legal requirements depend on the product and destination market.
@@ -70,6 +74,7 @@ Share the product category, product photo or link, target quantity, destination 
 - Plumbing and Bathroom Fixtures category: https://ywmusourcing.com/plumbing-bathroom-fixtures.html
 - Sewage pipe product catalogue: https://ywmusourcing.com/plumbing-bathroom-fixtures.html#sewage-pipe
 - Faucet catalogue, 41 product pages: https://ywmusourcing.com/plumbing-bathroom-fixtures.html#faucet
+- Drain pipe catalogue, 7 product pages: https://ywmusourcing.com/plumbing-bathroom-fixtures.html#drain-pipe
 - Blog and buyer insights: https://ywmusourcing.com/blog.html
 - Retail sourcing from China, four anonymized growth cases: https://ywmusourcing.com/blog/retail-sourcing-case-studies-china.html
 - 1688 sourcing agent guide for international buyers: https://ywmusourcing.com/blog/1688-sourcing-agent-guide.html
