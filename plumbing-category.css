@@ -8,3 +8,23 @@
 
 .faucet-catalog{background:#fff;border-top:1px solid #e1e7f0}.faucet-catalog .sewage-product-card{content-visibility:auto;contain-intrinsic-size:430px;background:#fff}.product-variants{width:100%;border-collapse:collapse;margin:24px 0 30px;background:#fff;font-size:13px}.product-variants caption{text-align:left;font:800 20px var(--serif);padding:0 0 12px;color:#14243b}.product-variants th,.product-variants td{padding:12px 14px;border:1px solid #d9e1ec;text-align:left}.product-variants th{background:#eaf0f8;color:#31445f}.product-variants td:first-child{font-weight:800;color:var(--red)}
 @media(max-width:520px){.product-variants{display:block;overflow-x:auto;white-space:nowrap}.faucet-catalog .sewage-product-card{contain-intrinsic-size:520px}}
+
+/* Some supplier images use a large white canvas around a small faucet.
+   Scale only those catalogue assets so the visible product matches the
+   surrounding cards without changing or regenerating the source image. */
+.sewage-product-card{overflow:hidden}
+.sewage-product-card a{overflow:hidden}
+.sewage-product-card a>div{position:relative;z-index:2;background:#fff}
+.sewage-product-card img[src$="pp-large-bend-vertical-white-brand-new-material-2.webp"]{transform:scale(2.85)}
+.sewage-product-card img[src$="pp-faucet-with-stainless-steel-spout-white-single-slot-handle.webp"]{transform:scale(3.5)}
+.sewage-product-card img[src$="343-1pp-faucet.webp"]{transform:scale(3.2)}
+.sewage-product-card img[src$="white-single-cold-water-faucet-pp-body-pipe-abs-electroplated-handle.webp"]{transform:scale(2.55)}
+.sewage-product-card img[src$="electroplated-single-cold-water-faucet-430-stainless-steel-bend-abs-body.webp"]{transform:scale(2.5)}
+
+.product-gallery{overflow:hidden}
+.product-gallery figcaption{position:relative;z-index:2;background:#fff}
+.product-detail-page[data-product-id="ru-fa-009"] .product-gallery img{transform:scale(2.85)}
+.product-detail-page[data-product-id="ru-fa-010"] .product-gallery img{transform:scale(3.5)}
+.product-detail-page[data-product-id="ru-fa-037"] .product-gallery img{transform:scale(3.2)}
+.product-detail-page[data-product-id="ru-fa-038"] .product-gallery img{transform:scale(2.55)}
+.product-detail-page[data-product-id="ru-fa-039"] .product-gallery img{transform:scale(2.5)}
