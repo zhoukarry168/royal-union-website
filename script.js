@@ -64,6 +64,24 @@ if (heroCarousel) {
   startAutoplay();
 }
 
+const reduceMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+const revealTargets = Array.from(document.querySelectorAll('main > section, .buyer-grid article, .capability-grid > article, .process-list li, .global-reach-stats div'));
+document.documentElement.classList.add('js-enabled');
+
+if (reduceMotionPreference.matches || !('IntersectionObserver' in window)) {
+  revealTargets.forEach((target) => target.classList.add('is-visible'));
+} else {
+  revealTargets.forEach((target) => target.classList.add('reveal-on-scroll'));
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.14, rootMargin: '0px 0px -35px' });
+  revealTargets.forEach((target) => revealObserver.observe(target));
+}
+
 const deferredStatement = document.querySelector('.statement');
 if (deferredStatement) {
   if ('IntersectionObserver' in window) {
@@ -163,6 +181,14 @@ if (inquiryForm) {
       inquiryForm.reset();
       formStatus.classList.add('is-success');
       formStatus.textContent = messages.success;
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', {
+          method: 'web_form',
+          contact_location: 'homepage_form',
+          page_path: window.location.pathname,
+          page_title: document.title
+        });
+      }
     } catch (error) {
       formStatus.classList.add('is-error');
       formStatus.textContent = messages.error;
