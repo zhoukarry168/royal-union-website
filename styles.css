@@ -38,3 +38,4 @@
 .global-route-map svg{overflow:visible}.world-land path{fill:#dce5f1;stroke:#c4d2e4;stroke-width:1.6;transition:fill .3s ease}.global-route-map:hover .world-land path{fill:#d2deed}.route-network .route-line{stroke-width:2.8;opacity:.9}.route-line--russia{animation-delay:-.4s}.route-line--africa{animation-delay:-1.8s}.route-line--australia{animation-delay:-2.4s}.route-packets circle{fill:#fff;stroke:#eb0036;stroke-width:3;filter:url(#route-glow)}.route-labels .route-label{font-size:10px}.route-points .route-origin{filter:url(#route-glow)}
 @media(max-width:800px){.route-labels .route-label{font-size:7px}.route-labels .route-label--origin{font-size:9px}.global-route-map{overflow:hidden}}
 @media(prefers-reduced-motion:reduce){.route-packets{display:none}}
+.capability-link{display:inline-block;margin-top:13px;color:var(--blue);text-decoration:none;font-size:13px;font-weight:800}.capability-link span{color:var(--red);margin-left:5px}
