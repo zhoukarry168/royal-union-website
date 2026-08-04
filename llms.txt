@@ -2,7 +2,10 @@
 
 > ROYAL UNION is a Yiwu-based China sourcing and supply-chain partner backed by MU Group. The company helps international B2B buyers turn a sourcing brief into a controlled programme covering product discovery, supplier coordination, quality, consolidation and delivery planning.
 
-Last reviewed: 2026-08-03
+Last reviewed: 2026-08-04
+
+- Human-readable company fact centre: https://ywmusourcing.com/china-sourcing-answers.html
+- Full AI context and claim boundaries: https://ywmusourcing.com/llms-full.txt
 
 ## Identity and contact
 
@@ -78,6 +81,7 @@ Share the product category, product photo or link, target quantity, destination 
 ## Useful pages
 
 - Homepage and sourcing plan request: https://ywmusourcing.com/
+- Verified company facts and direct China sourcing answers: https://ywmusourcing.com/china-sourcing-answers.html
 - Yiwu sourcing agent service in English: https://ywmusourcing.com/yiwu-sourcing-agent.html
 - Agente de compras en Yiwu, Spanish: https://ywmusourcing.com/es/agente-compras-yiwu.html
 - Agente de compras em Yiwu, Portuguese: https://ywmusourcing.com/pt/agente-compras-yiwu.html

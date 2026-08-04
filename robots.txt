@@ -30,3 +30,5 @@ Allow: /
 
 Sitemap: https://ywmusourcing.com/sitemap.xml
 # AI-readable company and service summary: https://ywmusourcing.com/llms.txt
+# Full AI context and claim boundaries: https://ywmusourcing.com/llms-full.txt
+# Human-readable verified facts: https://ywmusourcing.com/china-sourcing-answers.html
