@@ -137,6 +137,8 @@ const inquiryForm = document.querySelector('#inquiry-form');
 
 if (inquiryForm) {
   const formEndpoint = 'https://formsubmit.co/ajax/sales5@royalunion.com.cn';
+  const minimumCompletionTime = 5000;
+  let formOpenedAt = Date.now();
   inquiryForm.action = formEndpoint;
   inquiryForm.method = 'post';
   const submitButton = inquiryForm.querySelector('button[type="submit"]');
@@ -147,28 +149,105 @@ if (inquiryForm) {
   inquiryForm.append(formStatus);
 
   const locale = document.documentElement.lang;
-  const formMessages = {
-    en: { sending: 'Sending your request…', success: 'Thank you. Your sourcing request has been sent.', error: 'We could not send your request. Please contact us on WhatsApp or email sales5@royalunion.com.cn.' },
-    es: { sending: 'Enviando su solicitud…', success: 'Gracias. Su solicitud de abastecimiento se ha enviado.', error: 'No hemos podido enviar su solicitud. Contáctenos por WhatsApp o en sales5@royalunion.com.cn.' },
-    'pt-BR': { sending: 'Enviando sua solicitação…', success: 'Obrigado. Sua solicitação de sourcing foi enviada.', error: 'Não foi possível enviar sua solicitação. Fale conosco pelo WhatsApp ou por sales5@royalunion.com.cn.' },
-    ru: { sending: 'Отправляем ваш запрос…', success: 'Спасибо. Ваш запрос на закупку отправлен.', error: 'Не удалось отправить запрос. Свяжитесь с нами в WhatsApp или по адресу sales5@royalunion.com.cn.' },
-    'zh-CN': { sending: '正在发送您的需求…', success: '感谢您，您的采购需求已发送。', error: '暂时无法发送需求，请通过 WhatsApp 或 sales5@royalunion.com.cn 联系我们。' },
-    fr: { sending: 'Envoi de votre demande…', success: 'Merci. Votre demande d’approvisionnement a été envoyée.', error: 'Nous n’avons pas pu envoyer votre demande. Contactez-nous sur WhatsApp ou à sales5@royalunion.com.cn.' }
+  const formCopy = {
+    en: { name: 'Full name', email: 'Business email', company: 'Company', market: 'Primary market', requestType: 'What sourcing help do you need?', quantity: 'Expected order quantity', destination: 'Destination country', source: 'What are you looking to source?', confirm: 'I am contacting ROYAL UNION to buy or source products, not to sell services.', buyerOnly: '<strong>Product buyers only.</strong> This form is for sourcing, purchasing, OEM, quality control and consolidation requests. SEO, website, marketing, recruitment and supplier sales offers are not accepted.', sending: 'Sending your request…', success: 'Thank you. Your sourcing request has been sent.', filtered: 'This form only accepts product sourcing enquiries. Buyers should include a product or category, quantity and destination.', error: 'We could not send your request. Please contact us on WhatsApp or email sales5@royalunion.com.cn.' },
+    es: { name: 'Nombre completo', email: 'Correo empresarial', company: 'Empresa', market: 'Mercado principal', requestType: '¿Qué ayuda de abastecimiento necesita?', quantity: 'Cantidad prevista del pedido', destination: 'País de destino', source: '¿Qué producto desea comprar?', confirm: 'Contacto a ROYAL UNION para comprar o abastecer productos, no para vender servicios.', buyerOnly: '<strong>Solo compradores de productos.</strong> Este formulario es para solicitudes de abastecimiento, compras, OEM, control de calidad y consolidación. No se aceptan ofertas de servicios.', sending: 'Enviando su solicitud…', success: 'Gracias. Su solicitud de abastecimiento se ha enviado.', filtered: 'Este formulario solo acepta consultas de compra de productos. Incluya producto, cantidad y destino.', error: 'No hemos podido enviar su solicitud. Contáctenos por WhatsApp o en sales5@royalunion.com.cn.' },
+    'pt-BR': { name: 'Nome completo', email: 'E-mail corporativo', company: 'Empresa', market: 'Mercado principal', requestType: 'Que tipo de apoio de sourcing precisa?', quantity: 'Quantidade prevista do pedido', destination: 'País de destino', source: 'Que produto deseja comprar?', confirm: 'Estou contatando a ROYAL UNION para comprar produtos, não para vender serviços.', buyerOnly: '<strong>Somente compradores de produtos.</strong> Este formulário é para sourcing, compras, OEM, controle de qualidade e consolidação. Ofertas de serviços não são aceitas.', sending: 'Enviando sua solicitação…', success: 'Obrigado. Sua solicitação de sourcing foi enviada.', filtered: 'Este formulário aceita apenas consultas de compra de produtos. Inclua produto, quantidade e destino.', error: 'Não foi possível enviar sua solicitação. Fale conosco pelo WhatsApp ou por sales5@royalunion.com.cn.' },
+    ru: { name: 'Полное имя', email: 'Рабочий e-mail', company: 'Компания', market: 'Основной рынок', requestType: 'Какая помощь по закупкам вам нужна?', quantity: 'Ожидаемый объем заказа', destination: 'Страна назначения', source: 'Какой товар вы хотите закупить?', confirm: 'Я обращаюсь в ROYAL UNION для закупки товаров, а не для продажи услуг.', buyerOnly: '<strong>Только для покупателей товаров.</strong> Форма предназначена для закупок, OEM, контроля качества и консолидации. Предложения услуг не принимаются.', sending: 'Отправляем ваш запрос…', success: 'Спасибо. Ваш запрос на закупку отправлен.', filtered: 'Форма принимает только запросы на закупку товаров. Укажите товар, количество и страну назначения.', error: 'Не удалось отправить запрос. Свяжитесь с нами в WhatsApp или по адресу sales5@royalunion.com.cn.' },
+    'zh-CN': { name: '姓名', email: '企业邮箱', company: '公司名称', market: '主要市场', requestType: '您需要哪类采购服务？', quantity: '预计采购数量', destination: '目的国家', source: '您希望采购什么产品？', confirm: '我联系 ROYAL UNION 是为了采购产品，而不是推销服务。', buyerOnly: '<strong>仅限产品采购买家。</strong> 本表单只接受采购、OEM、验货、供应商管理及集货需求，不接受SEO、建站、营销、招聘或供应商推销。', sending: '正在发送您的需求…', success: '感谢您，您的采购需求已发送。', filtered: '本表单只接受产品采购需求。请填写产品或品类、数量及目的国家。', error: '暂时无法发送需求，请通过 WhatsApp 或 sales5@royalunion.com.cn 联系我们。' },
+    fr: { name: 'Nom complet', email: 'E-mail professionnel', company: 'Entreprise', market: 'Marché principal', requestType: 'De quelle aide sourcing avez-vous besoin ?', quantity: 'Quantité de commande prévue', destination: 'Pays de destination', source: 'Quel produit souhaitez-vous acheter ?', confirm: 'Je contacte ROYAL UNION pour acheter des produits, et non pour vendre des services.', buyerOnly: '<strong>Réservé aux acheteurs de produits.</strong> Ce formulaire concerne le sourcing, les achats, l’OEM, le contrôle qualité et la consolidation. Les offres de services ne sont pas acceptées.', sending: 'Envoi de votre demande…', success: 'Merci. Votre demande d’approvisionnement a été envoyée.', filtered: 'Ce formulaire accepte uniquement les demandes d’achat de produits. Indiquez le produit, la quantité et la destination.', error: 'Nous n’avons pas pu envoyer votre demande. Contactez-nous sur WhatsApp ou à sales5@royalunion.com.cn.' }
   };
-  const messages = formMessages[locale] || formMessages.en;
+  const messages = formCopy[locale] || formCopy.en;
+
+  inquiryForm.querySelectorAll('[data-form-label]').forEach((label) => {
+    const key = label.dataset.formLabel;
+    const firstTextNode = Array.from(label.childNodes).find((node) => node.nodeType === Node.TEXT_NODE);
+    if (firstTextNode && messages[key]) firstTextNode.nodeValue = messages[key];
+  });
+  const confirmationCopy = inquiryForm.querySelector('[data-buyer-confirmation]');
+  if (confirmationCopy) confirmationCopy.textContent = messages.confirm;
+  const buyerOnlyCopy = inquiryForm.querySelector('[data-buyer-only-note]');
+  if (buyerOnlyCopy) buyerOnlyCopy.innerHTML = messages.buyerOnly;
+
+  const spamPatterns = [
+    /\bseo(?:\s+services?)?\b/i,
+    /search engine optimi[sz]ation/i,
+    /link building/i,
+    /\bbacklinks?\b/i,
+    /guest post/i,
+    /domain authority/i,
+    /google ranking|rank(?:ing)? (?:your )?(?:site|website).*(?:google|search)/i,
+    /first page (?:of )?google/i,
+    /web(?:site)? (?:design|development)/i,
+    /digital marketing|social media marketing|content marketing/i,
+    /pay per click|\bppc services?\b/i,
+    /marketing agency|website audit|free audit/i,
+    /increase (?:your )?(?:website )?traffic|improve (?:your )?online visibility/i,
+    /i noticed your website|dear website owner/i,
+    /\b(?:ahrefs|semrush)\b/i
+  ];
+
+  inquiryForm.addEventListener('focusin', () => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'sourcing_form_start', {
+        contact_location: 'homepage_form',
+        page_path: window.location.pathname,
+        page_language: locale
+      });
+    }
+  }, { once: true });
+
+  const trackBlockedSubmission = (reason) => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'invalid_lead_blocked', {
+        reason,
+        contact_location: 'homepage_form',
+        page_path: window.location.pathname
+      });
+    }
+  };
+
+  const showFilteredMessage = (reason) => {
+    formStatus.className = 'form-status is-filtered';
+    formStatus.textContent = messages.filtered;
+    trackBlockedSubmission(reason);
+  };
 
   inquiryForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!inquiryForm.reportValidity()) return;
 
+    const payload = Object.fromEntries(new FormData(inquiryForm).entries());
+    const honeypot = String(payload._honey || '').trim();
+    const buyerText = [payload.name, payload.company, payload.request_type, payload.quantity, payload.destination, payload.message]
+      .filter(Boolean)
+      .join(' ');
+
+    if (honeypot) {
+      formStatus.className = 'form-status is-success';
+      formStatus.textContent = messages.success;
+      trackBlockedSubmission('honeypot');
+      return;
+    }
+    if (Date.now() - formOpenedAt < minimumCompletionTime) {
+      showFilteredMessage('completed_too_fast');
+      return;
+    }
+    if (payload.buyer_status !== 'product_buyer' || spamPatterns.some((pattern) => pattern.test(buyerText))) {
+      showFilteredMessage('non_buyer_content');
+      return;
+    }
+
     submitButton.disabled = true;
+    inquiryForm.dataset.submitting = 'true';
     formStatus.className = 'form-status';
     formStatus.textContent = messages.sending;
 
-    const payload = Object.fromEntries(new FormData(inquiryForm).entries());
-    payload._subject = 'New sourcing plan request | ROYAL UNION';
+    const companyName = String(payload.company || '').replace(/[\r\n|]/g, ' ').slice(0, 80);
+    const requestType = String(payload.request_type || '').replace(/[\r\n|]/g, ' ').slice(0, 80);
+    payload._subject = `[BUYER INQUIRY] ${requestType} | ${companyName}`;
     payload._template = 'table';
-    payload._honey = '';
+    payload.page_language = locale;
 
     try {
       const response = await fetch(formEndpoint, {
@@ -179,6 +258,7 @@ if (inquiryForm) {
       if (!response.ok) throw new Error('Form submission failed');
 
       inquiryForm.reset();
+      formOpenedAt = Date.now();
       formStatus.classList.add('is-success');
       formStatus.textContent = messages.success;
       if (typeof window.gtag === 'function') {
@@ -194,6 +274,7 @@ if (inquiryForm) {
       formStatus.textContent = messages.error;
     } finally {
       submitButton.disabled = false;
+      delete inquiryForm.dataset.submitting;
     }
   });
 }

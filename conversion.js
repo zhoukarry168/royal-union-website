@@ -46,7 +46,7 @@
 
   const track = (channel, location) => {
     if (typeof window.gtag === 'function') {
-      window.gtag('event', 'generate_lead', {
+      window.gtag('event', 'contact_click', {
         method: channel,
         contact_location: location,
         page_path: window.location.pathname,
