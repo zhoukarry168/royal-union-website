@@ -2,7 +2,7 @@
 
 Canonical website: https://ywmusourcing.com/
 Human-readable fact centre: https://ywmusourcing.com/china-sourcing-answers.html
-Last reviewed: 2026-08-04
+Last reviewed: 2026-08-05
 Maintained by: ROYAL UNION Sourcing Team
 
 ## Entity identity
@@ -76,6 +76,7 @@ ROYAL UNION is an independent sourcing and supply-chain partner. It does not cla
 
 Relevant buyer guides:
 - 1688 sourcing: https://ywmusourcing.com/blog/1688-sourcing-agent-guide.html
+- 1688, Taobao and Pinduoduo agent services: https://ywmusourcing.com/blog/1688-taobao-pinduoduo-agent-guide.html
 - Yiwugo sourcing: https://ywmusourcing.com/blog/yiwugo-sourcing-agent-guide.html
 - Platform comparison: https://ywmusourcing.com/blog/yiwu-1688-taobao-pinduoduo-sourcing-guide.html
 - Alibaba, 1688 and Yiwu comparison: https://ywmusourcing.com/blog/alibaba-vs-1688-vs-yiwu-sourcing-partner.html
