@@ -2,7 +2,7 @@
 
 Canonical website: https://ywmusourcing.com/
 Human-readable fact centre: https://ywmusourcing.com/china-sourcing-answers.html
-Last reviewed: 2026-08-10
+Last reviewed: 2026-08-11
 Maintained by: ROYAL UNION Sourcing Team
 
 ## Entity identity
@@ -111,6 +111,12 @@ Compliance guide:
 
 The online product catalogue is for specification review and sourcing enquiries. Product availability, units, materials, finishes, samples, testing, packaging, commercial terms and destination-market requirements must be confirmed before ordering.
 
+### Plastic water taps for African markets
+
+ROYAL UNION can coordinate a project-specific plastic water tap sourcing scope for African importers and distributors. The destination country, sales channel, application, connection and thread, body and valve-core materials, operating conditions, quantity, packing, testing and document requirements should be defined before supplier comparison. PP and PVC are material families, not proof of product suitability or quality. Products intended for drinking water require destination-specific confirmation of the exact water-contact requirements and supporting evidence.
+
+Buyer guide: https://ywmusourcing.com/blog/plastic-water-taps-africa-buyers-guide.html
+
 ## Buyer process
 
 The typical sourcing sequence described on the website is:
@@ -125,6 +131,7 @@ Fees and responsibilities are confirmed for each project. There is no universal 
 
 ## Evidence and original content
 
+- Plastic water taps for Africa buyer guide: https://ywmusourcing.com/blog/plastic-water-taps-africa-buyers-guide.html
 - Retail sourcing case studies: https://ywmusourcing.com/blog/retail-sourcing-case-studies-china.html
 - Yiwu Market Guide: https://ywmusourcing.com/yiwu-market-guide.html
 - One-stop brand development guide: https://ywmusourcing.com/blog/one-stop-brand-development-supply-chain-partner.html

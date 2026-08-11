@@ -17,6 +17,65 @@
     ? `Hello ROYAL UNION, I would like a quotation for ${productCode} — ${title}.\nQuantity:\nDestination market:\nTarget delivery date:`
     : `Hello ROYAL UNION, I need sourcing support.\nProduct / category: ${title}\nQuantity:\nDestination market:\nTarget price or timeline:`;
 
+  // GA4 cannot report an AI citation by itself; it can only identify visits
+  // where the assistant preserves a referrer or an explicit utm_source.
+  const query = new URLSearchParams(window.location.search);
+  const campaignSource = (query.get('utm_source') || '').toLowerCase();
+  let referrerHost = '';
+  try {
+    referrerHost = document.referrer ? new URL(document.referrer).hostname.toLowerCase() : '';
+  } catch (_) {
+    referrerHost = '';
+  }
+  const aiReferrers = [
+    { source: 'chatgpt', hosts: ['chatgpt.com', 'chat.openai.com'], campaigns: ['chatgpt', 'openai'] },
+    { source: 'gemini', hosts: ['gemini.google.com', 'bard.google.com'], campaigns: ['gemini', 'google_ai'] },
+    { source: 'perplexity', hosts: ['perplexity.ai'], campaigns: ['perplexity'] },
+    { source: 'microsoft_copilot', hosts: ['copilot.microsoft.com'], campaigns: ['copilot', 'microsoft_copilot'] },
+    { source: 'claude', hosts: ['claude.ai'], campaigns: ['claude', 'anthropic'] },
+    { source: 'grok', hosts: ['grok.com'], campaigns: ['grok'] },
+    { source: 'you_com', hosts: ['you.com'], campaigns: ['you.com', 'you_com'] }
+  ];
+  const aiMatch = aiReferrers.find((item) =>
+    item.hosts.some((host) => referrerHost === host || referrerHost.endsWith(`.${host}`)) ||
+    item.campaigns.includes(campaignSource)
+  );
+  const aiSource = aiMatch?.source || '';
+  const getStoredAiSource = () => {
+    try {
+      return sessionStorage.getItem('royal_union_ai_source') || '';
+    } catch (_) {
+      return '';
+    }
+  };
+  if (aiSource) {
+    try {
+      sessionStorage.setItem('royal_union_ai_source', aiSource);
+    } catch (_) {
+      // Analytics remains optional when storage is unavailable.
+    }
+    const sendAiReferral = () => {
+      const eventKey = `royal_union_ai_referral:${aiSource}:${window.location.pathname}`;
+      try {
+        if (sessionStorage.getItem(eventKey)) return;
+        sessionStorage.setItem(eventKey, '1');
+      } catch (_) {
+        // Send the event without de-duplication if storage is unavailable.
+      }
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'ai_referral_visit', {
+          ai_source: aiSource,
+          referrer_host: referrerHost || '(not_provided)',
+          campaign_source: campaignSource || '(not_provided)',
+          page_path: window.location.pathname,
+          page_title: document.title
+        });
+      }
+    };
+    if (document.readyState === 'complete') sendAiReferral();
+    else window.addEventListener('load', sendAiReferral, { once: true });
+  }
+
   let whatsapp = document.querySelector('a.whatsapp');
   if (!whatsapp) {
     whatsapp = document.createElement('a');
@@ -49,6 +108,7 @@
       window.gtag('event', 'contact_click', {
         method: channel,
         contact_location: location,
+        ai_source: aiSource || getStoredAiSource() || '(not_detected)',
         page_path: window.location.pathname,
         page_title: document.title
       });
