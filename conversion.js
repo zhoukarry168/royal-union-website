@@ -13,6 +13,7 @@
   const copy = labels[lang] || labels.en;
   const title = (document.querySelector('h1')?.textContent || document.title || 'China sourcing request').replace(/\s+/g, ' ').trim();
   const productCode = document.querySelector('[data-current-product-code]')?.textContent?.trim();
+  const dockPrompt = productCode ? `Get price & MOQ · ${productCode}` : copy.prompt;
   const message = productCode
     ? `Hello ROYAL UNION, I would like a quotation for ${productCode} — ${title}.\nQuantity:\nDestination market:\nTarget delivery date:`
     : `Hello ROYAL UNION, I need sourcing support.\nProduct / category: ${title}\nQuantity:\nDestination market:\nTarget price or timeline:`;
@@ -97,8 +98,8 @@
 
   const dock = document.createElement('aside');
   dock.className = 'contact-dock';
-  dock.setAttribute('aria-label', copy.prompt);
-  dock.innerHTML = `<span class="contact-dock-label">${copy.prompt}</span>`;
+  dock.setAttribute('aria-label', dockPrompt);
+  dock.innerHTML = `<span class="contact-dock-label">${dockPrompt}</span>`;
   whatsapp.remove();
   dock.append(whatsapp, emailLink);
   document.body.append(dock);
@@ -109,6 +110,7 @@
         method: channel,
         contact_location: location,
         ai_source: aiSource || getStoredAiSource() || '(not_detected)',
+        product_code: productCode || '(not_product_page)',
         page_path: window.location.pathname,
         page_title: document.title
       });
@@ -123,4 +125,13 @@
     link.dataset.contactChannel = 'email';
     link.addEventListener('click', () => track('email', link.closest('.contact-dock') ? 'floating_dock' : 'page_content'));
   });
+
+  if (productCode && typeof window.gtag === 'function') {
+    window.gtag('event', 'product_detail_view', {
+      product_code: productCode,
+      product_name: title,
+      page_path: window.location.pathname,
+      ai_source: aiSource || getStoredAiSource() || '(not_detected)'
+    });
+  }
 })();
