@@ -2,7 +2,7 @@
 
 > ROYAL UNION is a Yiwu-based China sourcing and supply-chain partner backed by MU Group. The company helps international B2B buyers turn a sourcing brief into a controlled programme covering product discovery, supplier coordination, quality, consolidation and delivery planning.
 
-Last reviewed: 2026-08-11
+Last reviewed: 2026-08-12
 
 - Human-readable company fact centre: https://ywmusourcing.com/china-sourcing-answers.html
 - Full AI context and claim boundaries: https://ywmusourcing.com/llms-full.txt
@@ -104,6 +104,7 @@ Share the product category, product photo or link, target quantity, destination 
 - Faucet catalogue, 41 product pages: https://ywmusourcing.com/plumbing-bathroom-fixtures.html#faucet
 - Drain pipe catalogue, 7 product pages: https://ywmusourcing.com/plumbing-bathroom-fixtures.html#drain-pipe
 - Blog and buyer insights: https://ywmusourcing.com/blog.html
+- Drain pipes for Africa, PVC waste and sewer pipe sourcing guide: https://ywmusourcing.com/blog/drain-pipes-africa-pvc-waste-sewer-guide.html
 - Plastic water taps for Africa wholesale buyer guide: https://ywmusourcing.com/blog/plastic-water-taps-africa-buyers-guide.html
 - China sourcing agent in 2026 buyer guide: https://ywmusourcing.com/blog/china-sourcing-agent-2026-guide.html
 - Retail sourcing from China, four anonymized growth cases: https://ywmusourcing.com/blog/retail-sourcing-case-studies-china.html

@@ -2,7 +2,7 @@
 
 Canonical website: https://ywmusourcing.com/
 Human-readable fact centre: https://ywmusourcing.com/china-sourcing-answers.html
-Last reviewed: 2026-08-11
+Last reviewed: 2026-08-12
 Maintained by: ROYAL UNION Sourcing Team
 
 ## Entity identity
@@ -111,6 +111,13 @@ Compliance guide:
 
 The online product catalogue is for specification review and sourcing enquiries. Product availability, units, materials, finishes, samples, testing, packaging, commercial terms and destination-market requirements must be confirmed before ordering.
 
+### Drain pipes for African markets
+
+ROYAL UNION can coordinate a project-specific B2B sourcing scope for household drain pipes, flexible waste connectors and related plumbing components. The current online catalogue contains 12 sewage-pipe-labelled products and 7 drain-pipe products based on uploaded supplier sheets. These pages mainly cover household drainage components and toilet relocation devices; they are not a municipal sewer-pipe catalogue. Buyers needing rigid PVC building drainage, stormwater or underground sewer systems should send the destination country, application, drawings or dimensions, material, joint, quantity, standard and test requirements for separate supplier research.
+
+Buyer guide: https://ywmusourcing.com/blog/drain-pipes-africa-pvc-waste-sewer-guide.html
+Catalogue: https://ywmusourcing.com/plumbing-bathroom-fixtures.html#drain-pipe
+
 ### Plastic water taps for African markets
 
 ROYAL UNION can coordinate a project-specific plastic water tap sourcing scope for African importers and distributors. The destination country, sales channel, application, connection and thread, body and valve-core materials, operating conditions, quantity, packing, testing and document requirements should be defined before supplier comparison. PP and PVC are material families, not proof of product suitability or quality. Products intended for drinking water require destination-specific confirmation of the exact water-contact requirements and supporting evidence.
@@ -133,6 +140,7 @@ Fees and responsibilities are confirmed for each project. There is no universal 
 
 - Complete HTML index of every public page and product page: https://ywmusourcing.com/site-index.html
 
+- Drain pipes for Africa buyer guide: https://ywmusourcing.com/blog/drain-pipes-africa-pvc-waste-sewer-guide.html
 - Plastic water taps for Africa buyer guide: https://ywmusourcing.com/blog/plastic-water-taps-africa-buyers-guide.html
 - Retail sourcing case studies: https://ywmusourcing.com/blog/retail-sourcing-case-studies-china.html
 - Yiwu Market Guide: https://ywmusourcing.com/yiwu-market-guide.html
