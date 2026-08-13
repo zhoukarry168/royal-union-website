@@ -14,7 +14,7 @@
 
 ## Contact
 
-- Email: sales5@royalunion.com.cn
+- Sourcing inquiry form: https://ywmusourcing.com/#contact
 - WhatsApp / phone: +86 152 6865 6210
 - Office: 16F, East Village, Kaiyue Building, No. 399 Shangbo Road, Futian Street, Yiwu City, Zhejiang Province, China
 

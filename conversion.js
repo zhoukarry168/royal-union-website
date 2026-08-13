@@ -1,14 +1,13 @@
 (() => {
   const phone = '8615268656210';
-  const email = 'sales5@royalunion.com.cn';
   const lang = document.documentElement.lang || 'en';
   const labels = {
-    en: { prompt: 'Need a sourcing quote?', whatsapp: 'WhatsApp', email: 'Email' },
-    es: { prompt: '¿Necesita una cotización?', whatsapp: 'WhatsApp', email: 'Correo' },
-    'pt-BR': { prompt: 'Precisa de uma cotação?', whatsapp: 'WhatsApp', email: 'E-mail' },
-    ru: { prompt: 'Нужен расчет закупки?', whatsapp: 'WhatsApp', email: 'Email' },
-    'zh-CN': { prompt: '需要采购报价？', whatsapp: 'WhatsApp', email: '邮件' },
-    fr: { prompt: 'Besoin d’un devis sourcing ?', whatsapp: 'WhatsApp', email: 'E-mail' }
+    en: { prompt: 'Need a sourcing quote?', whatsapp: 'WhatsApp', form: 'Inquiry form' },
+    es: { prompt: '¿Necesita una cotización?', whatsapp: 'WhatsApp', form: 'Formulario' },
+    'pt-BR': { prompt: 'Precisa de uma cotação?', whatsapp: 'WhatsApp', form: 'Formulário' },
+    ru: { prompt: 'Нужен расчет закупки?', whatsapp: 'WhatsApp', form: 'Форма' },
+    'zh-CN': { prompt: '需要采购报价？', whatsapp: 'WhatsApp', form: '询盘表' },
+    fr: { prompt: 'Besoin d’un devis sourcing ?', whatsapp: 'WhatsApp', form: 'Formulaire' }
   };
   const copy = labels[lang] || labels.en;
   const title = (document.querySelector('h1')?.textContent || document.title || 'China sourcing request').replace(/\s+/g, ' ').trim();
@@ -90,18 +89,20 @@
   const whatsappLabel = whatsapp.querySelector('span');
   if (whatsappLabel) whatsappLabel.textContent = copy.whatsapp;
 
-  const emailLink = document.createElement('a');
-  emailLink.className = 'contact-dock-email';
-  emailLink.href = `mailto:${email}?subject=${encodeURIComponent(`Sourcing enquiry — ${title}`)}&body=${encodeURIComponent(`${message}\n\nName:\nCompany:`)}`;
-  emailLink.setAttribute('aria-label', `${copy.email}: ${copy.prompt}`);
-  emailLink.innerHTML = `<span aria-hidden="true">✉</span><b>${copy.email}</b>`;
+  const formLink = document.createElement('a');
+  formLink.className = 'contact-dock-email';
+  const pathDepth = Math.max(0, window.location.pathname.split('/').filter(Boolean).length - 1);
+  formLink.href = `${'../'.repeat(pathDepth)}index.html#contact`;
+  formLink.dataset.inquiryFormLink = '';
+  formLink.setAttribute('aria-label', `${copy.form}: ${copy.prompt}`);
+  formLink.innerHTML = `<span aria-hidden="true">✎</span><b>${copy.form}</b>`;
 
   const dock = document.createElement('aside');
   dock.className = 'contact-dock';
   dock.setAttribute('aria-label', dockPrompt);
   dock.innerHTML = `<span class="contact-dock-label">${dockPrompt}</span>`;
   whatsapp.remove();
-  dock.append(whatsapp, emailLink);
+  dock.append(whatsapp, formLink);
   document.body.append(dock);
 
   const track = (channel, location) => {
@@ -121,9 +122,9 @@
     link.dataset.contactChannel = 'whatsapp';
     link.addEventListener('click', () => track('whatsapp', link.closest('.contact-dock') ? 'floating_dock' : 'page_content'));
   });
-  document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
-    link.dataset.contactChannel = 'email';
-    link.addEventListener('click', () => track('email', link.closest('.contact-dock') ? 'floating_dock' : 'page_content'));
+  document.querySelectorAll('[data-inquiry-form-link]').forEach((link) => {
+    link.dataset.contactChannel = 'inquiry_form';
+    link.addEventListener('click', () => track('inquiry_form', link.closest('.contact-dock') ? 'floating_dock' : 'page_content'));
   });
 
   if (productCode && typeof window.gtag === 'function') {
