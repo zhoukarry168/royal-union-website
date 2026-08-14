@@ -28,6 +28,18 @@
 .contact-dock-email{display:flex;align-items:center;justify-content:center;gap:7px;min-width:78px;min-height:48px;padding:10px 12px;background:#143a75;color:#fff;text-decoration:none;font-size:13px}
 .contact-dock-email span{font-size:18px;line-height:1}.contact-dock-email b{font:800 13px var(--sans)}
 .contact-dock a:focus-visible{outline:3px solid #ff315c;outline-offset:2px}
+.contact-dock a{transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}
+@media(min-width:801px){
+  .contact-dock{right:28px;bottom:28px;grid-template-columns:minmax(0,1.55fr) minmax(112px,.75fr);gap:10px;width:360px;padding:12px;border-radius:10px;box-shadow:0 20px 54px rgba(10,28,55,.3)}
+  .contact-dock-label{font-size:13px;padding:2px 4px 5px;color:#263852}
+  .contact-dock .whatsapp{min-height:68px;gap:12px;padding:17px 22px;border-radius:7px;font-size:17px;box-shadow:0 8px 22px rgba(37,211,102,.3),0 0 0 4px rgba(37,211,102,.13)}
+  .contact-dock .whatsapp svg{width:32px;height:32px;flex:0 0 32px}
+  .contact-dock .whatsapp span,.contact-dock .whatsapp span::after{font-size:17px!important;letter-spacing:.01em}
+  .contact-dock-email{min-width:112px;min-height:68px;padding:14px;border-radius:7px}
+  .contact-dock-email b{font-size:14px;line-height:1.2;text-align:center}
+  .contact-dock a:hover{transform:translateY(-2px);filter:saturate(1.06)}
+  .contact-dock .whatsapp:hover{box-shadow:0 12px 28px rgba(37,211,102,.38),0 0 0 5px rgba(37,211,102,.16)}
+}
 .contact-channel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:23px 0 27px;max-width:560px}
 .contact-channel{display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:68px;padding:15px 17px;background:#fff;color:#10213c;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,.55)}
 .contact-channel--whatsapp{background:#25d366;color:#062c15;border-color:#25d366}.contact-channel small{display:block;margin-top:4px;font-weight:500;opacity:.72}.contact-channel>span:last-child{font-size:22px}
