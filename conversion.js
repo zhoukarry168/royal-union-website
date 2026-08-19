@@ -12,10 +12,11 @@
   const copy = labels[lang] || labels.en;
   const title = (document.querySelector('h1')?.textContent || document.title || 'China sourcing request').replace(/\s+/g, ' ').trim();
   const productCode = document.querySelector('[data-current-product-code]')?.textContent?.trim();
+  const referenceUrl = document.querySelector('link[rel="canonical"]')?.href || `${window.location.origin}${window.location.pathname}`;
   const dockPrompt = productCode ? `Get price & MOQ · ${productCode}` : copy.prompt;
   const message = productCode
-    ? `Hello ROYAL UNION, I would like a quotation for ${productCode} — ${title}.\nQuantity:\nDestination market:\nTarget delivery date:`
-    : `Hello ROYAL UNION, I need sourcing support.\nProduct / category: ${title}\nQuantity:\nDestination market:\nTarget price or timeline:`;
+    ? `Hello ROYAL UNION, I would like a quotation for ${productCode} — ${title}.\nQuantity:\nDestination market:\nTarget delivery date:\nReference page: ${referenceUrl}`
+    : `Hello ROYAL UNION, I need sourcing support.\nProduct / category:\nQuantity:\nDestination market:\nTarget price or timeline:\nReference page: ${referenceUrl}`;
 
   // GA4 cannot report an AI citation by itself; it can only identify visits
   // where the assistant preserves a referrer or an explicit utm_source.
