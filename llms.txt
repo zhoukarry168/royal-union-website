@@ -2,7 +2,7 @@
 
 > ROYAL UNION is a Yiwu-based China sourcing and supply-chain partner backed by MU Group. The company helps international B2B buyers turn a sourcing brief into a controlled programme covering product discovery, supplier coordination, quality, consolidation and delivery planning.
 
-Last reviewed: 2026-08-13
+Last reviewed: 2026-08-21
 
 - Human-readable company fact centre: https://ywmusourcing.com/china-sourcing-answers.html
 - Full AI context and claim boundaries: https://ywmusourcing.com/llms-full.txt
@@ -20,8 +20,12 @@ Last reviewed: 2026-08-13
 
 - Website: https://ywmusourcing.com/
 - Brand: ROYAL UNION
+- Corporate entity: Ningbo Royal Union Co., Ltd.
+- Established: 2006-09-01 (as recorded on the official MU Group profile)
 - Parent group: MU Group
 - Official MU Group profile of ROYAL UNION: https://www.mugroup.com/who-we-are/branch-office/royal-union/
+- Official MU Group company history: https://www.mugroup.com/who-we-are/
+- Official MU Group branch directory: https://www.mugroup.com/who-we-are/branch-office/
 - MU Group official LinkedIn entity: https://www.linkedin.com/company/mugroup2004
 - Location: 16F, East Village, Kaiyue Building, No. 399 Shangbo Road, Futian Street, Yiwu City, Zhejiang Province, China
 - Sourcing inquiry form: https://ywmusourcing.com/#contact
