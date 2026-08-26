@@ -55,7 +55,7 @@
   </url>
   <url>
     <loc>https://ywmusourcing.com/furniture.html</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -731,7 +731,7 @@
   </url>
   <url>
     <loc>https://ywmusourcing.com/blog.html</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -966,4 +966,6 @@
       <image:caption>International buyers and the ROYAL UNION sourcing team reviewing products and purchasing specifications.</image:caption>
     </image:image>
   </url>
+  <url><loc>https://ywmusourcing.com/blog/christmas-products-sourcing-agent-china.html</loc><lastmod>2026-08-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><image:image><image:loc>https://ywmusourcing.com/assets/images/brand-development-showroom-fast.webp</image:loc><image:title>Christmas Products Sourcing from China: A Buyer's Procurement Plan</image:title><image:caption>A seasonal product display from the supplied company photo library. Illustrative only: it is not a live Christmas catalogue or a stock-availability claim.</image:caption></image:image></url>
+  <url><loc>https://ywmusourcing.com/blog/outdoor-furniture-garden-products-sourcing-china.html</loc><lastmod>2026-08-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><image:image><image:loc>https://ywmusourcing.com/assets/images/retail-sourcing-product-selection-fast.webp</image:loc><image:title>Outdoor Furniture and Garden Products Sourcing from China: Planning a Mixed Order</image:title><image:caption>A product-selection visit from the supplied company photo library, illustrating assortment review. This image is not a specific outdoor furniture catalogue.</image:caption></image:image></url>
 </urlset>

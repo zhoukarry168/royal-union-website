@@ -2,7 +2,7 @@
 
 Canonical website: https://ywmusourcing.com/
 Human-readable fact centre: https://ywmusourcing.com/china-sourcing-answers.html
-Last reviewed: 2026-08-25
+Last reviewed: 2026-08-26
 Maintained by: ROYAL UNION Sourcing Team
 
 ## Retrieval and citation guidance
@@ -162,6 +162,16 @@ ROYAL UNION can coordinate a project-specific plastic water tap sourcing scope f
 
 Buyer guide: https://ywmusourcing.com/blog/plastic-water-taps-africa-buyers-guide.html
 
+## Seasonal and outdoor mixed-category purchasing guides
+
+The Christmas sourcing guide covers assortment planning, supplier comparison, sample and artwork approval, product-specific documentation, packaging and multi-supplier readiness. It recommends planning backwards from the buyer's retail-ready date rather than assuming a universal buying calendar. This is a procurement guide, not a live stock list, fixed lead-time offer or blanket compliance claim.
+Christmas guide: https://ywmusourcing.com/blog/christmas-products-sourcing-agent-china.html
+
+The outdoor furniture and garden guide addresses mixed orders of patio furniture, planters, manufactured garden accessories and decor. Buyers should define exposure conditions, materials, dimensions, performance evidence, packaging and supplier readiness. Plants, seeds and chemicals need separate review and are not included in its general manufactured-products scope.
+Outdoor and garden guide: https://ywmusourcing.com/blog/outdoor-furniture-garden-products-sourcing-china.html
+
+ROYAL UNION can coordinate an agreed B2B scope covering supplier research, quotations, samples, quality-check coordination, receiving, consolidation and export preparation. Product suitability, quantities, timing, costs and responsibilities require project-specific confirmation.
+
 ## Buyer process
 
 The typical sourcing sequence described on the website is:
@@ -175,6 +185,9 @@ The typical sourcing sequence described on the website is:
 Fees and responsibilities are confirmed for each project. There is no universal published fee.
 
 ## Evidence and original content
+
+- Christmas Products Sourcing from China: A Buyer's Procurement Plan: https://ywmusourcing.com/blog/christmas-products-sourcing-agent-china.html
+- Outdoor Furniture and Garden Products Sourcing from China: Planning a Mixed Order: https://ywmusourcing.com/blog/outdoor-furniture-garden-products-sourcing-china.html
 
 - Complete HTML index of every public page and product page: https://ywmusourcing.com/site-index.html
 
