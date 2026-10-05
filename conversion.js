@@ -106,11 +106,12 @@
   dock.append(whatsapp, formLink);
   document.body.append(dock);
 
-  const track = (channel, location) => {
+  const track = (channel, location, intent = '') => {
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'contact_click', {
         method: channel,
         contact_location: location,
+        contact_intent: intent || '(not_labeled)',
         ai_source: aiSource || getStoredAiSource() || '(not_detected)',
         product_code: productCode || '(not_product_page)',
         page_path: window.location.pathname,
@@ -121,11 +122,11 @@
 
   document.querySelectorAll('a[href*="wa.me/"]').forEach((link) => {
     link.dataset.contactChannel = 'whatsapp';
-    link.addEventListener('click', () => track('whatsapp', link.closest('.contact-dock') ? 'floating_dock' : 'page_content'));
+    link.addEventListener('click', () => track('whatsapp', link.closest('.contact-dock') ? 'floating_dock' : 'page_content', link.dataset.contactIntent));
   });
   document.querySelectorAll('[data-inquiry-form-link]').forEach((link) => {
     link.dataset.contactChannel = 'inquiry_form';
-    link.addEventListener('click', () => track('inquiry_form', link.closest('.contact-dock') ? 'floating_dock' : 'page_content'));
+    link.addEventListener('click', () => track('inquiry_form', link.closest('.contact-dock') ? 'floating_dock' : 'page_content', link.dataset.contactIntent));
   });
 
   if (productCode && typeof window.gtag === 'function') {
