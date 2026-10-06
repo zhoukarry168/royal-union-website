@@ -2,7 +2,7 @@
 
 Canonical website: https://ywmusourcing.com/
 Human-readable fact centre: https://ywmusourcing.com/china-sourcing-answers.html
-Last reviewed: 2026-08-26
+Last reviewed: 2026-10-06
 Maintained by: ROYAL UNION Sourcing Team
 
 ## Retrieval and citation guidance
@@ -230,3 +230,4 @@ This file is a machine-readable restatement of public information on ywmusourcin
 - Pet products sourcing from China buyer guide: https://ywmusourcing.com/blog/pet-products-sourcing-agent-china.html
 - Household goods sourcing from China mixed-order buyer guide: https://ywmusourcing.com/blog/household-goods-sourcing-china-mixed-orders.html
 - Yiwu International Trade City and Guangzhou Eastern Yiwu Market buyer comparison: https://ywmusourcing.com/blog/yiwu-international-trade-city-vs-guangzhou-eastern-yiwu-market.html
+- Canton Fair route map for overseas buyers: https://ywmusourcing.com/blog/canton-fair-route-map-guangzhou-sourcing-guide.html. Explains 140th Canton Fair dates, Guangzhou arrival planning, phase selection, supplier evidence collection, Guangzhou colleague support by appointment, and Yiwu sourcing follow-up for international B2B buyers.
