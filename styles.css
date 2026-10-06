@@ -66,3 +66,12 @@
 .hero-actions .button-primary[href*="wa.me"] span{color:#062c15}
 @media(max-width:900px){.hero-buyer-paths{grid-template-columns:1fr;max-width:560px}.hero-buyer-paths>a,.hero-buyer-paths>span{min-height:auto}.hero-actions{align-items:flex-start;flex-direction:column;gap:16px}.hero-proof{margin-top:38px}}
 @media(max-width:520px){h1,.hero-title{font-size:clamp(40px,12vw,52px)}.hero-buyer-paths{margin-top:20px}.hero-buyer-paths>a,.hero-buyer-paths>span{padding:13px 14px}.hero-carousel .hero-slide .hero-content{padding-bottom:118px}}
+
+/* 2026-10 hero CTA alignment: keep the first-screen copy left-readable while centering the primary action buttons. */
+.hero-actions{max-width:610px;justify-content:center;text-align:center}
+@media(max-width:900px){.hero-actions{width:100%;max-width:560px;align-items:center}.hero-actions .text-link{align-self:center}}
+@media(max-width:520px){.hero-actions{max-width:100%}.hero-actions .button{width:100%;justify-content:center}}
+
+/* 2026-10 hero carousel controls: center the banner navigation under the first-screen story. */
+.hero-carousel-controls{left:50%;bottom:30px;transform:translateX(-50%);justify-content:center;padding:7px 11px;border-radius:999px;background:rgba(7,20,44,.26);backdrop-filter:blur(6px)}
+@media(max-width:800px){.hero-carousel-controls{left:50%;bottom:22px;transform:translateX(-50%)}}
