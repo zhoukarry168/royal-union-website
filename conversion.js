@@ -2,7 +2,7 @@
   const phone = '8615268656210';
   const lang = document.documentElement.lang || 'en';
   const labels = {
-    en: { prompt: 'Need a sourcing quote?', whatsapp: 'WhatsApp', form: 'Inquiry form' },
+    en: { prompt: 'Need a sourcing quote?', whatsapp: 'WhatsApp quote', form: 'Quote form' },
     es: { prompt: '¿Necesita una cotización?', whatsapp: 'WhatsApp', form: 'Formulario' },
     'pt-BR': { prompt: 'Precisa de uma cotação?', whatsapp: 'WhatsApp', form: 'Formulário' },
     ru: { prompt: 'Нужен расчет закупки?', whatsapp: 'WhatsApp', form: 'Форма' },
@@ -13,7 +13,19 @@
   const title = (document.querySelector('h1')?.textContent || document.title || 'China sourcing request').replace(/\s+/g, ' ').trim();
   const productCode = document.querySelector('[data-current-product-code]')?.textContent?.trim();
   const referenceUrl = document.querySelector('link[rel="canonical"]')?.href || `${window.location.origin}${window.location.pathname}`;
-  const dockPrompt = productCode ? `Get price & MOQ · ${productCode}` : copy.prompt;
+  const pathDepth = Math.max(0, window.location.pathname.split('/').filter(Boolean).length - 1);
+  const homePath = `${'../'.repeat(pathDepth)}index.html`;
+  const contactFormHref = `${homePath}#contact`;
+  const pageType = productCode
+    ? 'product_detail'
+    : document.body.classList.contains('article-page')
+      ? 'blog_article'
+      : document.body.classList.contains('blog-hub')
+        ? 'blog_hub'
+        : window.location.pathname === '/' || window.location.pathname.endsWith('/index.html')
+          ? 'homepage'
+          : 'site_page';
+  const dockPrompt = productCode ? `Get price & MOQ · ${productCode}` : 'B2B buyer? Send photos for a quote';
   const message = productCode
     ? `Hello ROYAL UNION, I would like a quotation for ${productCode} — ${title}.\nQuantity:\nDestination market:\nTarget delivery date:\nReference page: ${referenceUrl}`
     : `Hello ROYAL UNION, I need sourcing support.\nProduct / category:\nQuantity:\nDestination market:\nTarget price or timeline:\nReference page: ${referenceUrl}`;
@@ -49,6 +61,21 @@
       return '';
     }
   };
+  const baseEventParams = () => ({
+    ai_source: aiSource || getStoredAiSource() || '(not_detected)',
+    product_code: productCode || '(not_product_page)',
+    page_type: pageType,
+    page_path: window.location.pathname,
+    page_title: document.title
+  });
+  const sendEvent = (eventName, params = {}) => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, {
+        ...baseEventParams(),
+        ...params
+      });
+    }
+  };
   if (aiSource) {
     try {
       sessionStorage.setItem('royal_union_ai_source', aiSource);
@@ -64,12 +91,10 @@
         // Send the event without de-duplication if storage is unavailable.
       }
       if (typeof window.gtag === 'function') {
-        window.gtag('event', 'ai_referral_visit', {
+        sendEvent('ai_referral_visit', {
           ai_source: aiSource,
           referrer_host: referrerHost || '(not_provided)',
-          campaign_source: campaignSource || '(not_provided)',
-          page_path: window.location.pathname,
-          page_title: document.title
+          campaign_source: campaignSource || '(not_provided)'
         });
       }
     };
@@ -92,9 +117,9 @@
 
   const formLink = document.createElement('a');
   formLink.className = 'contact-dock-email';
-  const pathDepth = Math.max(0, window.location.pathname.split('/').filter(Boolean).length - 1);
-  formLink.href = `${'../'.repeat(pathDepth)}index.html#contact`;
+  formLink.href = contactFormHref;
   formLink.dataset.inquiryFormLink = '';
+  formLink.dataset.contactIntent = productCode ? 'floating_product_quote_form' : 'floating_quote_form';
   formLink.setAttribute('aria-label', `${copy.form}: ${copy.prompt}`);
   formLink.innerHTML = `<span aria-hidden="true">✎</span><b>${copy.form}</b>`;
 
@@ -106,35 +131,84 @@
   dock.append(whatsapp, formLink);
   document.body.append(dock);
 
-  const track = (channel, location, intent = '') => {
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'contact_click', {
-        method: channel,
-        contact_location: location,
-        contact_intent: intent || '(not_labeled)',
-        ai_source: aiSource || getStoredAiSource() || '(not_detected)',
-        product_code: productCode || '(not_product_page)',
-        page_path: window.location.pathname,
-        page_title: document.title
+  if (document.body.classList.contains('article-page')) {
+    const articleMain = document.querySelector('.article-main');
+    if (articleMain && !articleMain.querySelector('.article-quick-inquiry')) {
+      const articlePrompt = document.createElement('aside');
+      articlePrompt.className = 'article-quick-inquiry';
+      articlePrompt.setAttribute('aria-label', 'Sourcing quote request');
+      articlePrompt.innerHTML = `
+        <div>
+          <p class="article-quick-kicker">Ready to compare suppliers?</p>
+          <h2>Send your product brief before you leave this guide.</h2>
+          <p>Share product photos or links, quantity, destination market and target timing. ROYAL UNION will review the sourcing route and practical next step.</p>
+        </div>
+        <div class="article-quick-actions">
+          <a class="button button-primary" href="https://wa.me/${phone}?text=${encodeURIComponent(message)}" target="_blank" rel="noreferrer" data-contact-intent="article_inline_whatsapp">Send brief on WhatsApp <span>→</span></a>
+          <a class="text-link" href="${contactFormHref}" data-inquiry-form-link data-contact-intent="article_inline_form">Use inquiry form <span>↓</span></a>
+        </div>`;
+      const insertionTarget = Array.from(articleMain.children).find((element) =>
+        element.matches('.article-benefits, .article-direct-answer, p, h2')
+      );
+      if (insertionTarget) insertionTarget.insertAdjacentElement('afterend', articlePrompt);
+      else articleMain.prepend(articlePrompt);
+    }
+  }
+
+  const track = (channel, location, intent = '', link = null) => {
+    const linkText = (link?.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+    const eventParams = {
+      method: channel,
+      contact_location: location,
+      contact_intent: intent || linkText || '(not_labeled)',
+      link_text: linkText || '(not_available)'
+    };
+    sendEvent('contact_click', eventParams);
+    if (channel === 'whatsapp') {
+      sendEvent('whatsapp_click', {
+        ...eventParams,
+        outbound_destination: 'whatsapp'
       });
+      if (productCode) {
+        sendEvent('product_inquiry_click', {
+          ...eventParams,
+          product_name: title
+        });
+      }
+    }
+    if (channel === 'inquiry_form') {
+      sendEvent('inquiry_form_click', eventParams);
     }
   };
 
   document.querySelectorAll('a[href*="wa.me/"]').forEach((link) => {
     link.dataset.contactChannel = 'whatsapp';
-    link.addEventListener('click', () => track('whatsapp', link.closest('.contact-dock') ? 'floating_dock' : 'page_content', link.dataset.contactIntent));
+    link.addEventListener('click', () => track('whatsapp', link.closest('.contact-dock') ? 'floating_dock' : 'page_content', link.dataset.contactIntent, link));
   });
   document.querySelectorAll('[data-inquiry-form-link]').forEach((link) => {
     link.dataset.contactChannel = 'inquiry_form';
-    link.addEventListener('click', () => track('inquiry_form', link.closest('.contact-dock') ? 'floating_dock' : 'page_content', link.dataset.contactIntent));
+    link.addEventListener('click', () => track('inquiry_form', link.closest('.contact-dock') ? 'floating_dock' : 'page_content', link.dataset.contactIntent, link));
   });
 
-  if (productCode && typeof window.gtag === 'function') {
-    window.gtag('event', 'product_detail_view', {
+  if (productCode) {
+    sendEvent('product_detail_view', {
       product_code: productCode,
-      product_name: title,
-      page_path: window.location.pathname,
-      ai_source: aiSource || getStoredAiSource() || '(not_detected)'
+      product_name: title
     });
   }
+
+  let maxScrollPercent = 0;
+  const updateScrollDepth = () => {
+    const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const current = Math.round((window.scrollY / scrollable) * 100);
+    maxScrollPercent = Math.max(maxScrollPercent, Math.min(100, current));
+  };
+  window.addEventListener('scroll', updateScrollDepth, { passive: true });
+  window.setTimeout(() => {
+    updateScrollDepth();
+    sendEvent('qualified_visit', {
+      engagement_seconds: 30,
+      max_scroll_percent: maxScrollPercent
+    });
+  }, 30000);
 })();

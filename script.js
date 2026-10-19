@@ -146,6 +146,17 @@ if (inquiryForm) {
     fr: { name: 'Nom complet', email: 'E-mail professionnel', whatsapp: 'Numéro WhatsApp (facultatif)', company: 'Entreprise', market: 'Marché principal', requestType: 'De quelle aide sourcing avez-vous besoin ?', quantity: 'Quantité de commande prévue', destination: 'Pays de destination', source: 'Quel produit souhaitez-vous acheter ?', confirm: 'Je contacte ROYAL UNION pour acheter des produits, et non pour vendre des services.', buyerOnly: '<strong>Réservé aux acheteurs de produits.</strong> Ce formulaire concerne le sourcing, les achats, l’OEM, le contrôle qualité et la consolidation. Les offres de services ne sont pas acceptées.', sending: 'Envoi de votre demande…', success: 'Merci. Votre demande d’approvisionnement a été envoyée.', filtered: 'Ce formulaire accepte uniquement les demandes d’achat de produits. Indiquez le produit, la quantité et la destination.', error: 'Nous n’avons pas pu envoyer votre demande. Réessayez ou utilisez WhatsApp.' }
   };
   const messages = formCopy[locale] || formCopy.en;
+  const trackFormEvent = (eventName, extraParams = {}) => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, {
+        contact_location: 'homepage_form',
+        page_path: window.location.pathname,
+        page_title: document.title,
+        page_language: locale,
+        ...extraParams
+      });
+    }
+  };
 
   inquiryForm.querySelectorAll('[data-form-label]').forEach((label) => {
     const key = label.dataset.formLabel;
@@ -176,23 +187,15 @@ if (inquiryForm) {
   ];
 
   inquiryForm.addEventListener('focusin', () => {
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'sourcing_form_start', {
-        contact_location: 'homepage_form',
-        page_path: window.location.pathname,
-        page_language: locale
-      });
-    }
+    trackFormEvent('form_start', { form_name: 'homepage_sourcing_inquiry' });
+    trackFormEvent('sourcing_form_start', { form_name: 'homepage_sourcing_inquiry' });
   }, { once: true });
 
   const trackBlockedSubmission = (reason) => {
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'invalid_lead_blocked', {
-        reason,
-        contact_location: 'homepage_form',
-        page_path: window.location.pathname
-      });
-    }
+    trackFormEvent('invalid_lead_blocked', {
+      reason,
+      form_name: 'homepage_sourcing_inquiry'
+    });
   };
 
   const showFilteredMessage = (reason) => {
@@ -233,9 +236,21 @@ if (inquiryForm) {
 
     const companyName = String(payload.company || '').replace(/[\r\n|]/g, ' ').slice(0, 80);
     const requestType = String(payload.request_type || '').replace(/[\r\n|]/g, ' ').slice(0, 80);
+    const market = String(payload.market || '').replace(/[\r\n|]/g, ' ').slice(0, 60);
+    const destination = String(payload.destination || '').replace(/[\r\n|]/g, ' ').slice(0, 60);
+    const hasWhatsapp = String(payload.whatsapp || '').trim() ? 'yes' : 'no';
     payload._subject = `[BUYER INQUIRY] ${requestType} | ${companyName}`;
     payload._template = 'table';
     payload.page_language = locale;
+    payload.lead_source_url = window.location.href;
+
+    trackFormEvent('form_submit_attempt', {
+      form_name: 'homepage_sourcing_inquiry',
+      lead_request_type: requestType || '(not_provided)',
+      lead_market: market || '(not_provided)',
+      lead_destination: destination || '(not_provided)',
+      has_whatsapp: hasWhatsapp
+    });
 
     try {
       const response = await fetch(formEndpoint, {
@@ -249,17 +264,24 @@ if (inquiryForm) {
       formOpenedAt = Date.now();
       formStatus.classList.add('is-success');
       formStatus.textContent = messages.success;
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'generate_lead', {
-          method: 'web_form',
-          contact_location: 'homepage_form',
-          page_path: window.location.pathname,
-          page_title: document.title
-        });
-      }
+      const leadParams = {
+        method: 'web_form',
+        form_name: 'homepage_sourcing_inquiry',
+        lead_request_type: requestType || '(not_provided)',
+        lead_market: market || '(not_provided)',
+        lead_destination: destination || '(not_provided)',
+        has_whatsapp: hasWhatsapp
+      };
+      trackFormEvent('inquiry_form_submit', leadParams);
+      trackFormEvent('generate_lead', leadParams);
     } catch (error) {
       formStatus.classList.add('is-error');
       formStatus.textContent = messages.error;
+      trackFormEvent('form_submit_error', {
+        form_name: 'homepage_sourcing_inquiry',
+        lead_request_type: requestType || '(not_provided)',
+        lead_market: market || '(not_provided)'
+      });
     } finally {
       submitButton.disabled = false;
       delete inquiryForm.dataset.submitting;
