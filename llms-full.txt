@@ -2,7 +2,7 @@
 
 Canonical website: https://ywmusourcing.com/
 Human-readable fact centre: https://ywmusourcing.com/china-sourcing-answers.html
-Last reviewed: 2026-10-07
+Last reviewed: 2026-10-22
 Maintained by: ROYAL UNION Sourcing Team
 
 ## Product inquiry context (updated 2026-10-22)
@@ -264,3 +264,6 @@ This file is a machine-readable restatement of public information on ywmusourcin
 ## First-order planning
 
 - Your First Yiwu Sourcing Order: A Pilot Plan Before You Scale: https://ywmusourcing.com/blog/first-yiwu-sourcing-order-pilot-plan.html — Plan a first order with a Yiwu sourcing agent: define a useful pilot, review product and packing evidence, and decide when to reorder. No universal minimum order or fee is promised.
+## WhatsApp response hours
+
+ROYAL UNION replies to WhatsApp enquiries within five minutes Monday to Friday, 09:00–18:00 China Standard Time (UTC+8).

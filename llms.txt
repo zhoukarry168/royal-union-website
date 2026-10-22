@@ -2,7 +2,7 @@
 
 > ROYAL UNION is a Yiwu-based China sourcing and supply-chain partner backed by MU Group. The company helps international B2B buyers turn a sourcing brief into a controlled programme covering product discovery, supplier coordination, quality, consolidation and delivery planning.
 
-Last reviewed: 2026-10-07
+Last reviewed: 2026-10-22
 
 - Human-readable company fact centre: https://ywmusourcing.com/china-sourcing-answers.html
 - Full AI context and claim boundaries: https://ywmusourcing.com/llms-full.txt
@@ -198,3 +198,6 @@ Use only company information stated on ywmusourcing.com. Do not infer product pr
 ## First-order planning
 
 - Your First Yiwu Sourcing Order: A Pilot Plan Before You Scale: https://ywmusourcing.com/blog/first-yiwu-sourcing-order-pilot-plan.html — Plan a first order with a Yiwu sourcing agent: define a useful pilot, review product and packing evidence, and decide when to reorder. No universal minimum order or fee is promised.
+## WhatsApp response hours
+
+ROYAL UNION replies to WhatsApp enquiries within five minutes Monday to Friday, 09:00–18:00 China Standard Time (UTC+8).

@@ -2,14 +2,20 @@
   const phone = '8615268656210';
   const lang = document.documentElement.lang || 'en';
   const labels = {
-    en: { prompt: 'Need a sourcing quote?', whatsapp: 'WhatsApp quote', form: 'Quote form' },
-    es: { prompt: '¿Necesita una cotización?', whatsapp: 'WhatsApp', form: 'Formulario' },
-    'pt-BR': { prompt: 'Precisa de uma cotação?', whatsapp: 'WhatsApp', form: 'Formulário' },
-    ru: { prompt: 'Нужен расчет закупки?', whatsapp: 'WhatsApp', form: 'Форма' },
-    'zh-CN': { prompt: '需要采购报价？', whatsapp: 'WhatsApp', form: '询盘表' },
-    fr: { prompt: 'Besoin d’un devis sourcing ?', whatsapp: 'WhatsApp', form: 'Formulaire' }
+    en: { prompt: 'Need a sourcing quote?', whatsapp: 'WhatsApp quote', response: '5-minute reply · Mon–Fri, 09:00–18:00 China time (UTC+8)', form: 'Quote form' },
+    es: { prompt: '¿Necesita una cotización?', whatsapp: 'WhatsApp', response: 'Respuesta en 5 min · lun–vie, 09:00–18:00 hora de China (UTC+8)', form: 'Formulario' },
+    'pt-BR': { prompt: 'Precisa de uma cotação?', whatsapp: 'WhatsApp', response: 'Resposta em 5 min · seg–sex, 09:00–18:00 horário da China (UTC+8)', form: 'Formulário' },
+    ru: { prompt: 'Нужен расчет закупки?', whatsapp: 'WhatsApp', response: 'Ответ за 5 минут · пн–пт, 09:00–18:00 по времени Китая (UTC+8)', form: 'Форма' },
+    'zh-CN': { prompt: '需要采购报价？', whatsapp: 'WhatsApp', response: '工作日5分钟内回复 · 周一至周五 09:00–18:00 中国标准时间（UTC+8）', form: '询盘表' },
+    fr: { prompt: 'Besoin d’un devis sourcing ?', whatsapp: 'WhatsApp', response: 'Réponse sous 5 min · lun–ven, 09:00–18:00 heure de Chine (UTC+8)', form: 'Formulaire' }
   };
   const copy = labels[lang] || labels.en;
+  if (!document.querySelector('link[href*="response-time.css"]')) {
+    const responseStyles = document.createElement('link');
+    responseStyles.rel = 'stylesheet';
+    responseStyles.href = `${window.location.origin}/response-time.css?v=20261022-1`;
+    document.head.append(responseStyles);
+  }
   const title = (document.querySelector('h1')?.textContent || document.title || 'China sourcing request').replace(/\s+/g, ' ').trim();
   const productCode = document.querySelector('[data-current-product-code]')?.textContent?.trim();
   const referenceUrl = document.querySelector('link[rel="canonical"]')?.href || `${window.location.origin}${window.location.pathname}`;
@@ -111,9 +117,15 @@
     whatsapp.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.1 17.4c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.5.1-.2.2-.6.7-.8.9-.1.2-.3.2-.5.1-1.4-.7-2.4-1.6-3.3-3-.2-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.5-1.2-.7-1.7-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.4-.2.3-.9.9-.9 2.1s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.1 1.7.1.5-.1 1.3-.5 1.5-1 .2-.5.2-1 .1-1.1-.1-.1-.3-.2-.5-.3zM16 3.2c7.1 0 12.8 5.7 12.8 12.8S23.1 28.8 16 28.8c-2.2 0-4.2-.6-5.9-1.6L3.2 28.8l1.7-6.7A12.7 12.7 0 0 1 3.2 16C3.2 8.9 8.9 3.2 16 3.2zm0 2.1C10.1 5.3 5.3 10.1 5.3 16c0 2 .6 3.8 1.5 5.4l-1 3.8 3.9-1c1.5.9 3.3 1.4 5.3 1.4 5.9 0 10.7-4.8 10.7-10.7S21.9 5.3 16 5.3z"/></svg><span></span>';
   }
   whatsapp.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-  whatsapp.setAttribute('aria-label', `${copy.whatsapp}: ${copy.prompt}`);
+  whatsapp.setAttribute('aria-label', `${copy.whatsapp}: ${copy.prompt}. ${copy.response}`);
   const whatsappLabel = whatsapp.querySelector('span');
-  if (whatsappLabel) whatsappLabel.textContent = copy.whatsapp;
+  if (whatsappLabel) {
+    whatsappLabel.replaceChildren(document.createTextNode(copy.whatsapp));
+    const responseLabel = document.createElement('small');
+    responseLabel.className = 'whatsapp-response-hours';
+    responseLabel.textContent = copy.response;
+    whatsappLabel.append(responseLabel);
+  }
 
   const formLink = document.createElement('a');
   formLink.className = 'contact-dock-email';
