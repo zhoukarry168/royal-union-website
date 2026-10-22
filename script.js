@@ -136,6 +136,28 @@ if (inquiryForm) {
   formStatus.setAttribute('aria-live', 'polite');
   inquiryForm.append(formStatus);
 
+  // Carry a same-site product/article reference without putting buyer data in URLs.
+  try {
+    const context = JSON.parse(sessionStorage.getItem('royal_union_inquiry_context') || 'null');
+    const source = context && new URL(context.url);
+    if (source && source.origin === window.location.origin &&
+        Date.now() - context.savedAt >= 0 && Date.now() - context.savedAt < 1800000) {
+      for (const [name, value] of Object.entries({
+        reference_page: source.origin + source.pathname,
+        reference_title: String(context.title || '').slice(0, 180),
+        reference_product: String(context.productCode || '').slice(0, 40)
+      })) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        inquiryForm.append(input);
+      }
+    }
+  } catch (_) {
+    // Storage is optional; the form remains usable in private browsing.
+  }
+
   const locale = document.documentElement.lang;
   const formCopy = {
     en: { name: 'Full name', email: 'Business email', whatsapp: 'WhatsApp number (recommended)', company: 'Company', market: 'Primary market', requestType: 'What sourcing help do you need?', quantity: 'Expected order quantity', destination: 'Destination country', source: 'What are you looking to source?', confirm: 'I am contacting ROYAL UNION to buy or source products, not to sell services.', buyerOnly: '<strong>Product buyers only.</strong> This form is for sourcing, purchasing, OEM, quality control and consolidation requests. SEO, website, marketing, recruitment and supplier sales offers are not accepted.', sending: 'Sending your request…', success: 'Thank you. Your sourcing request has been sent.', filtered: 'This form only accepts product sourcing enquiries. Buyers should include a product or category, quantity and destination.', error: 'We could not send your request. Please retry or contact us on WhatsApp.' },
@@ -206,6 +228,7 @@ if (inquiryForm) {
 
   inquiryForm.addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (inquiryForm.dataset.submitting === 'true') return;
     if (!inquiryForm.reportValidity()) return;
 
     const payload = Object.fromEntries(new FormData(inquiryForm).entries());
@@ -237,7 +260,6 @@ if (inquiryForm) {
     const companyName = String(payload.company || '').replace(/[\r\n|]/g, ' ').slice(0, 80);
     const requestType = String(payload.request_type || '').replace(/[\r\n|]/g, ' ').slice(0, 80);
     const market = String(payload.market || '').replace(/[\r\n|]/g, ' ').slice(0, 60);
-    const destination = String(payload.destination || '').replace(/[\r\n|]/g, ' ').slice(0, 60);
     const hasWhatsapp = String(payload.whatsapp || '').trim() ? 'yes' : 'no';
     payload._subject = `[BUYER INQUIRY] ${requestType} | ${companyName}`;
     payload._template = 'table';
@@ -248,17 +270,23 @@ if (inquiryForm) {
       form_name: 'homepage_sourcing_inquiry',
       lead_request_type: requestType || '(not_provided)',
       lead_market: market || '(not_provided)',
-      lead_destination: destination || '(not_provided)',
       has_whatsapp: hasWhatsapp
     });
 
+    const controller = new AbortController();
+    const requestTimeout = window.setTimeout(() => controller.abort(), 20000);
     try {
       const response = await fetch(formEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        signal: controller.signal
       });
       if (!response.ok) throw new Error('Form submission failed');
+      const result = await response.json();
+      if (result.success !== true && result.success !== 'true') {
+        throw new Error('Form provider did not accept the request');
+      }
 
       inquiryForm.reset();
       formOpenedAt = Date.now();
@@ -269,7 +297,6 @@ if (inquiryForm) {
         form_name: 'homepage_sourcing_inquiry',
         lead_request_type: requestType || '(not_provided)',
         lead_market: market || '(not_provided)',
-        lead_destination: destination || '(not_provided)',
         has_whatsapp: hasWhatsapp
       };
       trackFormEvent('inquiry_form_submit', leadParams);
@@ -283,6 +310,7 @@ if (inquiryForm) {
         lead_market: market || '(not_provided)'
       });
     } finally {
+      window.clearTimeout(requestTimeout);
       submitButton.disabled = false;
       delete inquiryForm.dataset.submitting;
     }

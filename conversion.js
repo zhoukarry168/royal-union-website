@@ -185,9 +185,20 @@
     link.dataset.contactChannel = 'whatsapp';
     link.addEventListener('click', () => track('whatsapp', link.closest('.contact-dock') ? 'floating_dock' : 'page_content', link.dataset.contactIntent, link));
   });
-  document.querySelectorAll('[data-inquiry-form-link]').forEach((link) => {
+  document.querySelectorAll('a[href]').forEach((link) => {
+    const target = new URL(link.href, window.location.href);
+    if (target.origin !== window.location.origin || target.hash !== '#contact') return;
     link.dataset.contactChannel = 'inquiry_form';
-    link.addEventListener('click', () => track('inquiry_form', link.closest('.contact-dock') ? 'floating_dock' : 'page_content', link.dataset.contactIntent, link));
+    link.addEventListener('click', () => {
+      if (pageType !== 'homepage') {
+        try {
+          sessionStorage.setItem('royal_union_inquiry_context', JSON.stringify({
+            url: referenceUrl, title, productCode: productCode || '', savedAt: Date.now()
+          }));
+        } catch (_) { /* The form works without storage. */ }
+      }
+      track('inquiry_form', link.closest('.contact-dock') ? 'floating_dock' : 'page_content', link.dataset.contactIntent, link);
+    });
   });
 
   if (productCode) {
@@ -204,11 +215,22 @@
     maxScrollPercent = Math.max(maxScrollPercent, Math.min(100, current));
   };
   window.addEventListener('scroll', updateScrollDepth, { passive: true });
-  window.setTimeout(() => {
+  // This measures content engagement, not buyer qualification or an inquiry.
+  let visibleSeconds = 0;
+  let previousTick = performance.now();
+  document.addEventListener('visibilitychange', () => { previousTick = performance.now(); });
+  const engagementTimer = window.setInterval(() => {
+    const now = performance.now();
+    if (!document.hidden) visibleSeconds += Math.min(1.5, (now - previousTick) / 1000);
+    previousTick = now;
     updateScrollDepth();
-    sendEvent('qualified_visit', {
-      engagement_seconds: 30,
-      max_scroll_percent: maxScrollPercent
-    });
-  }, 30000);
+    if (visibleSeconds >= 30 && maxScrollPercent >= 25) {
+      sendEvent('content_engaged', {
+        engagement_seconds: Math.floor(visibleSeconds),
+        max_scroll_percent: maxScrollPercent
+      });
+      window.clearInterval(engagementTimer);
+    }
+  }, 1000);
+  window.addEventListener('pagehide', () => window.clearInterval(engagementTimer), { once: true });
 })();

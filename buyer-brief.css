@@ -1,0 +1,16 @@
+.buyer-brief{box-sizing:border-box;margin:36px auto;padding:28px;background:#f3f6fa;border:1px solid #d7e1ee;border-left:4px solid #eb0036;color:#10213b;text-align:left}
+.buyer-brief-kicker{margin:0 0 10px;font-size:13px;font-weight:700;color:#214c83}
+.buyer-brief h2{margin:0 0 16px;font-size:clamp(24px,3vw,34px);line-height:1.2;letter-spacing:-.02em}
+.buyer-brief h3{margin:0 0 8px;font-size:18px;line-height:1.35}
+.buyer-brief p{max-width:82ch;line-height:1.65}
+.buyer-brief-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:22px 0}
+.buyer-brief-grid p{margin:0}
+.buyer-brief .button{white-space:normal;min-height:48px}
+.buyer-brief-secondary{display:block;margin-top:18px;color:#174b91;text-decoration:underline;text-underline-offset:3px}
+.article-layout .article-main{margin-left:auto;margin-right:auto}
+.article-main table{width:100%;border-collapse:collapse;margin:20px 0 28px;font-size:16px;line-height:1.5;background:#fff}
+.article-main th,.article-main td{padding:14px;text-align:left;border:1px solid #d7e1ee;vertical-align:top}
+.article-main th{background:#e9eff6}.article-main caption{text-align:left;font-weight:700;padding:8px 0}
+.article-header .article-breadcrumb a{color:#d6e3f8}.article-header .article-breadcrumb{color:#d6e3f8}
+.article-main .buyer-brief h2{margin-top:0;font-size:clamp(24px,3vw,34px)}
+@media(max-width:640px){.buyer-brief{padding:20px;margin-top:24px;margin-bottom:24px}.buyer-brief-grid{grid-template-columns:1fr;gap:18px}.buyer-brief .button{width:100%}}
